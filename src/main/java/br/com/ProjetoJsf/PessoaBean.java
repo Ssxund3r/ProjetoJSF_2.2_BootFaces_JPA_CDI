@@ -1,20 +1,16 @@
 package br.com.ProjetoJsf;
 
-import javax.faces.bean.ManagedBean;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+
+@RequestScoped
 @ManagedBean(name = "pessoaBean")
 public class PessoaBean {
 	private String nome;
-	private String sobreNome;
-	private String nomeCompleto;
-
-	public String getNomeCompleto() {
-		return nomeCompleto;
-	}
-
-	public void setNomeCompleto(String nomeCompleto) {
-		this.nomeCompleto = nomeCompleto;
-	}
+	private List<String> nomes = new ArrayList<String>();
 
 	public String getNome() {
 		return nome;
@@ -24,19 +20,17 @@ public class PessoaBean {
 		this.nome = nome;
 	}
 
-	public String getSobreNome() {
-		return sobreNome;
+	public List<String> getNomes() {
+		return nomes;
 	}
 
-	public void setSobreNome(String sobreNome) {
-		this.sobreNome = sobreNome;
+	public void setNomes(List<String> nomes) {
+		this.nomes = nomes;
 	}
-	
-	public String mostrarNome() {
-		nomeCompleto = nome + " -- " + sobreNome;
-		
+
+	public String addNome() {
+		nomes.add(nome);
 		return "";
-		
 	}
 
 }
