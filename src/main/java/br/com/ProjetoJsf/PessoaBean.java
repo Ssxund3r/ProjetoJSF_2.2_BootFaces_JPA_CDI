@@ -44,9 +44,10 @@ public class PessoaBean {
 
 		if (nomes.size() > 2) {
 			commandButton.setDisabled(true);
+			return "paginanavegada";
 		}
 
-		return "";
+		return ""; // null ou vazio fica na mesma página -> outcome
 	}
 
 }
