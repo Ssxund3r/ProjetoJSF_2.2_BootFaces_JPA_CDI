@@ -5,17 +5,29 @@
 
 <h:head>
 	<title>Projeto JSF - Conceito Básico</title>
+
+	<script>
+		function alterarValorCampo() {
+			var campo = document.getElementById('formPessoa:nome');
+			campo.value = 'Cliquei no Campo!';
+		}
+	</script>
 </h:head>
 <h:body>
 
 	<h:form id="formPessoa">
 
 		<h1>Olá JSF - Página index.jsf</h1>
-		
-		<h:commandButton value="Navegar" action="primeirapagina"/>
-		
-		<h:commandButton value="Navegar Explicita" action="explicita"/>	 
-		
+
+		<h:inputText id="nome" />
+		<h:commandButton value="Clicar" onclick="alterarValorCampo();" />
+
+		<br />
+		<br />
+		<h:commandButton value="Navegar" action="primeirapagina" />
+
+		<h:commandButton value="Navegar Explicita" action="explicita" />
+
 	</h:form>
 
 </h:body>
