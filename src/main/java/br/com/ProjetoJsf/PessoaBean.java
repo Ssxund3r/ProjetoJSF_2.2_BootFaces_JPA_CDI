@@ -11,8 +11,9 @@ import javax.faces.component.html.HtmlCommandButton;
 @ManagedBean(name = "pessoaBean")
 public class PessoaBean {
 	private String nome;
+	private String senha;
+	private String texto;
 	private List<String> nomes = new ArrayList<String>();
-
 	private HtmlCommandButton commandButton;
 
 	public String getNome() {
@@ -29,6 +30,22 @@ public class PessoaBean {
 
 	public void setNomes(List<String> nomes) {
 		this.nomes = nomes;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public String getTexto() {
+		return texto;
+	}
+
+	public void setTexto(String texto) {
+		this.texto = texto;
 	}
 
 	public HtmlCommandButton getCommandButton() {

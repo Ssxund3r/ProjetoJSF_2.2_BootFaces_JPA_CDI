@@ -14,6 +14,8 @@
 		
 		Nome:
 		<h:inputText id="campoNome" value="#{pessoaBean.nome}" />
+		<h:inputSecret id="senha" value="#{pessoaBean.senha}"/>
+		<h:inputTextarea id="texto" value="#{pessoaBean.texto}"/>
  
 		<h:commandButton binding="#{pessoaBean.commandButton}" value="Adicionar Nome" action="#{pessoaBean.addNome}" />
 
