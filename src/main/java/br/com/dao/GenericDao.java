@@ -17,6 +17,8 @@ public class GenericDao<E> {
 		
 		entityTransaction.commit();
 		entityManager.close();
+		
+		
 	
 	}
 	
