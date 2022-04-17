@@ -13,7 +13,7 @@ public class GenericDao<E> {
 		EntityTransaction entityTransaction = entityManager.getTransaction();
 		entityTransaction.begin();
 		
-		entityManager.persist(entidade);
+		entityManager.merge(entidade);
 		
 		entityTransaction.commit();
 		entityManager.close();
