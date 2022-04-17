@@ -7,64 +7,36 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.component.html.HtmlCommandButton;
 
+import br.com.dao.GenericDao;
+import br.com.entidades.Pessoa;
+
 @ViewScoped
 @ManagedBean(name = "pessoaBean")
 public class PessoaBean {
-	private String nome;
-	private String senha;
-	private String texto;
-	private List<String> nomes = new ArrayList<String>();
-	private HtmlCommandButton commandButton;
 
-	public String getNome() {
-		return nome;
+	private Pessoa pessoa = new Pessoa();
+	private GenericDao<Pessoa> genericDao = new GenericDao<Pessoa>();
+
+	public String salvar() {
+		genericDao.salvar(pessoa);
+		
+		return "";
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public Pessoa getPessoa() {
+		return pessoa;
 	}
 
-	public List<String> getNomes() {
-		return nomes;
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
 
-	public void setNomes(List<String> nomes) {
-		this.nomes = nomes;
+	public GenericDao<Pessoa> getGenericDao() {
+		return genericDao;
 	}
 
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-
-	public String getTexto() {
-		return texto;
-	}
-
-	public void setTexto(String texto) {
-		this.texto = texto;
-	}
-
-	public HtmlCommandButton getCommandButton() {
-		return commandButton;
-	}
-
-	public void setCommandButton(HtmlCommandButton commandButton) {
-		this.commandButton = commandButton;
-	}
-
-	public String addNome() {
-		nomes.add(nome);
-
-		if (nomes.size() > 2) {
-			commandButton.setDisabled(true);
-			return "paginanavegada?faces-redirect=true";
-		}
-
-		return ""; // null ou vazio fica na mesma página -> outcome
+	public void setGenericDao(GenericDao<Pessoa> genericDao) {
+		this.genericDao = genericDao;
 	}
 
 }
