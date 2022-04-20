@@ -26,6 +26,7 @@ public class PessoaBean {
 
 	public String remove() {
 		genericDao.deletePorID(pessoa);
+		pessoa = new Pessoa();
 		return "";
 	}
 
