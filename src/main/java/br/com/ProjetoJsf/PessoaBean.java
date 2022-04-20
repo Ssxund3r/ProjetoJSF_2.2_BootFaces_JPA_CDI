@@ -18,10 +18,15 @@ public class PessoaBean {
 
 		return "";
 	}
-	
+
 	public String novo() {
 		pessoa = new Pessoa();
-		return"";
+		return "";
+	}
+
+	public String remove() {
+		genericDao.deletePorID(pessoa);
+		return "";
 	}
 
 	public Pessoa getPessoa() {
