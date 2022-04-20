@@ -36,8 +36,22 @@
 		<h:commandButton value="Novo" action="#{pessoaBean.novo}"/>
 		<h:commandButton value="Deletar" action="#{pessoaBean.remove}"/>
 	
+	
+		<h:dataTable value="#{pessoaBean.pessoas}" var="pessoa">
+			<h:column>
+				<h:outputText value="#{pessoa.id}"/>
+			</h:column>
+			<h:column>
+				<h:outputText value="#{pessoa.nome}"/>
+			</h:column>
+			<h:column>
+				<h:outputText value="#{pessoa.sobrenome}"/>
+			</h:column>
+			<h:column>
+				<h:outputText value="#{pessoa.idade}"/>
+			</h:column>
+		</h:dataTable>
 	</h:form>
-
 </h:body>
 
 </html>

@@ -1,5 +1,9 @@
 package br.com.ProjetoJsf;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -12,10 +16,11 @@ public class PessoaBean {
 
 	private Pessoa pessoa = new Pessoa();
 	private GenericDao<Pessoa> genericDao = new GenericDao<Pessoa>();
+	private List<Pessoa> pessoas = new ArrayList<Pessoa>();
 
 	public String salvar() {
 		pessoa = genericDao.merge(pessoa);
-
+		carregarPessoas();
 		return "";
 	}
 
@@ -27,7 +32,13 @@ public class PessoaBean {
 	public String remove() {
 		genericDao.deletePorID(pessoa);
 		pessoa = new Pessoa();
+		carregarPessoas();
 		return "";
+	}
+	
+	@PostConstruct
+	public void carregarPessoas() {
+		pessoas = genericDao.getListEntity(Pessoa.class);
 	}
 
 	public Pessoa getPessoa() {
@@ -44,6 +55,10 @@ public class PessoaBean {
 
 	public void setGenericDao(GenericDao<Pessoa> genericDao) {
 		this.genericDao = genericDao;
+	}
+
+	public List<Pessoa> getPessoas() {
+		return pessoas;
 	}
 
 }
