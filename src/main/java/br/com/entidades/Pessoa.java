@@ -33,6 +33,8 @@ public class Pessoa implements Serializable {
 
 	private String[] frameworks;
 
+	private Boolean ativo;
+
 	public Pessoa() {
 
 	}
@@ -83,6 +85,14 @@ public class Pessoa implements Serializable {
 
 	public String getSexo() {
 		return sexo;
+	}
+
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
+	}
+
+	public Boolean getAtivo() {
+		return ativo;
 	}
 
 	public Date getDataNascimento() {
