@@ -85,7 +85,7 @@ public class PessoaBean {
 
 			session.setAttribute("usuarioLogado", pessoaUser);
 
-			return "primeirapagina.xhtml";
+			return "primeirapagina.jsf";
 		}
 		return "index.jsf";
 	}

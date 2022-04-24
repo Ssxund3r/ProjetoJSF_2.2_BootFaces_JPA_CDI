@@ -65,7 +65,7 @@
 					<f:selectItem itemValue="ADMIN"	itemLabel="Administrador"></f:selectItem>
 					<f:selectItem itemValue="SECRETARIO(A)" itemLabel="Secretário(a)"></f:selectItem>
 					<f:selectItem itemValue="RECEPCIONISTA" itemLabel="Recepcionista"></f:selectItem>
-					<f:selectItem itemValue="AUXILIAR" itemLabel="Auxiliar"></f:selectItem>
+					<f:selectItem itemValue="CONTADOR(A)" itemLabel="Contador(a)"></f:selectItem>
 				</h:selectOneMenu>	
 				
 			<h:outputLabel />
@@ -73,7 +73,7 @@
 					<h:commandButton value="Novo" action="#{pessoaBean.novo}" image="//resources/img/novo.png" title="Novo" style="margin-right: 5px;"/>
 					<h:commandButton value="Limpar" type="reset" image="//resources/img/resetar.png" title="Resetar" style="margin-right: 5px;" />
 					<h:commandButton value="Salvar" action="#{pessoaBean.salvar}" image="//resources/img/salvar.png" title="Salvar" style="margin-right: 5px;" /> 
-					<h:commandButton value="Deletar" action="#{pessoaBean.remove}" image="//resources/img/deletar.png" title="Deletar" style="margin-right: 5px;" />
+					<h:commandButton value="Deletar" action="#{pessoaBean.remove}" image="//resources/img/deletar.png" title="Deletar" style="margin-right: 5px;" rendered="#{pessoaBean.permiteAcesso('ADMIN')}" />
 					
 				</h:panelGroup>
 			</h:panelGrid>
@@ -113,7 +113,7 @@
 				
 				<h:outputLabel style="width:200px;" value=" "/>
 				
-				<h:column>
+				<h:column rendered="#{pessoaBean.permiteAcesso('ADMIN')}">
 				<f:facet name="header">Excluir</f:facet>
 					<h:commandLink action="#{pessoaBean.remove}">
 						<f:setPropertyActionListener target="#{pessoaBean.pessoa}" value="#{pessoa}" />
