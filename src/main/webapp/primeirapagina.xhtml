@@ -13,11 +13,15 @@
 		
 </h:head>
 <h:body style="font-family:sans-serif;">
-	
-	<h:form id="formPessoa">
-			<h:graphicImage height="30" width="30" style="float:top;  margin: 1px" library="img" name="java-jsf.png"/>
-			<h1 style="color: CornflowerBlue; float:right; margin: 1px 30px 30px 30px">Olá Admin - Ambiente Desenvolvimento</h1>
-			
+		    <h:graphicImage height="30" width="30" style="float:top;  margin: 1px" library="img" name="java-jsf.png"/>
+		
+		    <h:form >
+			<h:commandLink value="Administração" action="lancamento" style="margin-left: 1cm;" />
+			<h:commandLink value="Lançamentos" action="primeirapagina" style="margin-left: 1cm;" />
+			<h:commandLink value="Trocar Usuário" action="index" style="margin-left: 1cm;" />
+			</h:form>
+		
+	<h:form id="formPessoa" rendered="#{pessoaBean.permiteAcesso('ADMIN')}" >
 	        <h:panelGrid columns="2" style="border-spacing:15px 10px;">
 	        	<f:facet name="header">
 	        		<h:outputText value="Cadastro de Usuários - JSF" />
