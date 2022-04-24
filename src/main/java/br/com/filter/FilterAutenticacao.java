@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import br.com.entidades.Pessoa;
 import br.com.jpautil.JPAUtil;
 
-@WebFilter(urlPatterns = { "/*" }) /* Vai interceptar todas as páginas */
+@WebFilter(urlPatterns = "/*") /* Vai interceptar todas as páginas */
 public class FilterAutenticacao implements Filter {
 
 	@Override
@@ -51,7 +51,7 @@ public class FilterAutenticacao implements Filter {
 	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 }
