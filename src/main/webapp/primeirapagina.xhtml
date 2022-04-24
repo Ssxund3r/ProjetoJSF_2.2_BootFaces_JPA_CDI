@@ -18,7 +18,7 @@
 			
 	        <h:panelGrid columns="2" style="border-spacing:15px 10px;">
 	        	<f:facet name="header">
-	        		<h:outputText value="Cadastro em JSF" />
+	        		<h:outputText value="Cadastro de Usuários - JSF" />
 	        	</f:facet>
 				<h:outputLabel value="ID:" />
 				<h:inputText value="#{pessoaBean.pessoa.id}" readonly="true" />
@@ -33,7 +33,7 @@
 				<h:inputText value="#{pessoaBean.pessoa.idade}" />
 				
 				<h:outputLabel value="Sexo:"/>
-				<h:selectOneMenu id="campoSexo" value="#{pessoaBean.pessoa.sexo}" >
+				<h:selectOneMenu id="campoSexo" value="#{pessoaBean.pessoa.sexo}" required="false">
 					<f:selectItem itemValue="NAO" itemLabel="[-Selecione-]" noSelectionOption="true" />
 					<f:selectItem itemValue="MASCULINO"	itemLabel="Masculino"></f:selectItem>
 					<f:selectItem itemValue="FEMININO" itemLabel="Feminino"></f:selectItem>
@@ -50,8 +50,23 @@
 				
 			<h:outputLabel value="Ativo:"/>	
 			<h:selectBooleanCheckbox value="#{pessoaBean.pessoa.ativo}" />
+			
+			<h:outputLabel value="Login:" />
+			<h:inputText value="#{pessoaBean.pessoa.login}" />
+			
+			<h:outputLabel value="Senha"/>
+			<h:inputSecret value="#{pessoaBean.pessoa.senha}"/>
+			
+			<h:outputLabel value="Perfil:" />
+				<h:selectOneMenu id="perfil" value="#{pessoaBean.pessoa.perfilUser}" required="false">
+					<f:selectItem itemValue="NAO" itemLabel="[-Selecione-]" noSelectionOption="true" />
+					<f:selectItem itemValue="ADMIN"	itemLabel="Administrador"></f:selectItem>
+					<f:selectItem itemValue="SECRETARIO(A)" itemLabel="Secretário(a)"></f:selectItem>
+					<f:selectItem itemValue="RECEPCIONISTA" itemLabel="Recepcionista"></f:selectItem>
+					<f:selectItem itemValue="AUXILIAR" itemLabel="Auxiliar"></f:selectItem>
+				</h:selectOneMenu>	
 				
-			<h:outputLabel/>
+			<h:outputLabel />
 				<h:panelGroup >
 					<h:commandButton value="Novo" action="#{pessoaBean.novo}" image="//resources/img/novo.png" title="Novo" style="margin-right: 5px;"/>
 					<h:commandButton value="Limpar" type="reset" image="//resources/img/resetar.png" title="Resetar" style="margin-right: 5px;" />
@@ -64,7 +79,7 @@
 			<h:dataTable value="#{pessoaBean.pessoas}" var="pessoa" border="3" cellpadding="6" style="background:beige;">
 				
 				<f:facet name="header">
-					Lista de Pessoas Cadastradas
+					Lista de usuários cadastrados
 				</f:facet>
 				<h:column>
 				<f:facet name="header">ID</f:facet>

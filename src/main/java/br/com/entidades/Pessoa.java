@@ -19,21 +19,48 @@ public class Pessoa implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	private String nome;
-
 	private String sobrenome;
-
 	private Integer idade;
 
 	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
 
 	private String sexo;
-
+	
 	private String[] frameworks;
-
+	
 	private Boolean ativo;
+	
+	private String login;
+	private String senha;
+	
+	private String perfilUser;
+	
+	public void setPerfilUser(String perfilUser) {
+		this.perfilUser = perfilUser;
+	}
+	
+	public String getPerfilUser() {
+		return perfilUser;
+	}
+	
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
 
 	public Pessoa() {
 
@@ -46,7 +73,7 @@ public class Pessoa implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	public String getNome() {
 		return nome;
 	}
