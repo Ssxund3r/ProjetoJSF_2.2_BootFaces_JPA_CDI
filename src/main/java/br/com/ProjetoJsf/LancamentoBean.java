@@ -3,6 +3,7 @@ package br.com.ProjetoJsf;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
@@ -13,6 +14,8 @@ import javax.servlet.http.HttpSession;
 import br.com.dao.GenericDao;
 import br.com.entidades.Lancamento;
 import br.com.entidades.Pessoa;
+import br.com.repository.IDaoLancamento;
+import br.com.repository.IDaoLancamentoImpl;
 
 @ViewScoped
 @ManagedBean(name = "lancamentoBean")
@@ -21,6 +24,7 @@ public class LancamentoBean {
 	private Lancamento lancamento = new Lancamento();
 	private GenericDao<Lancamento> genericDao = new GenericDao<Lancamento>();
 	private List<Lancamento> lancamentos = new ArrayList<Lancamento>();
+	private IDaoLancamento daoLancamento = new IDaoLancamentoImpl();
 
 	public String salvar() {
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -32,16 +36,34 @@ public class LancamentoBean {
 
 		lancamento.setUsuario(pessoaUser);
 		genericDao.salvar(lancamento);
+
+		carregarLancamentos();
+
 		return "";
 	}
-	
+
 	public String novo() {
-	
+		lancamento = new Lancamento();
 		return "";
 	}
-	
-	public String remover () {
-		
+
+	@PostConstruct
+	public void carregarLancamentos() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		ExternalContext externalContext = context.getExternalContext();
+
+		HttpServletRequest req = (HttpServletRequest) externalContext.getRequest();
+		HttpSession session = req.getSession();
+		Pessoa pessoaUser = (Pessoa) session.getAttribute("usuarioLogado");
+
+		lancamentos = daoLancamento.consultar(pessoaUser.getId());
+
+	}
+
+	public String remove() {
+		genericDao.deletePorID(lancamento);
+		lancamento = new Lancamento();
+		carregarLancamentos();
 		return "";
 	}
 
