@@ -18,9 +18,9 @@
 			</h:form>
 		
 		
-		<h:form id="formLancamento" style="margin-top: 15%; margin-left: 40%;">
+		<h:form id="formLancamento">
 			<h:form>
-				<h:panelGrid columns="2">
+				<h:panelGrid columns="2" border="1">
 					<f:facet name="header">
 						<h:outputText value="Lançamentos" />
 					</f:facet>
@@ -39,12 +39,43 @@
 					
 					<h:outputLabel />
 					<h:panelGroup>
-					<h:commandButton value="Novo" action="#{lancamentoBean.novo}" image="//resources/img/novo.png" title="Novo" style="margin-right: 5px;"/>
-					<h:commandButton value="Limpar" type="reset" image="//resources/img/resetar.png" title="Resetar" style="margin-right: 5px;" />
-					<h:commandButton value="Salvar" action="#{lancamentoBean.salvar}" image="//resources/img/salvar.png" title="Salvar" style="margin-right: 5px;" /> 
-					<h:commandButton value="Deletar" action="#{lancamentoBean.remove}" image="//resources/img/deletar.png" title="Deletar" style="margin-right: 5px;" />
+					<h:commandButton value="Novo" action="#{lancamentoBean.novo}" image="//resources/img/novo.png" title="Novo" style="margin-left:10px;" />
+					<h:commandButton value="Limpar" type="reset" image="//resources/img/resetar.png" title="Resetar" style="margin-left:10px;" />
+					<h:commandButton value="Salvar" action="#{lancamentoBean.salvar}" image="//resources/img/salvar.png" title="Salvar" style="margin-left:10px;" /> 
+					<h:commandButton value="Deletar" action="#{lancamentoBean.remove}" image="//resources/img/deletar.png" title="Deletar" style="margin-left:10px;" />
 					</h:panelGroup>
 				</h:panelGrid>
+				
+				<h:dataTable value="#{lancamentoBean.lancamentos}" var="lanc" border="3" style="margin-top: 0px; margin-left: 40%;">
+					<f:facet name="header">Lista de Lançamentos</f:facet>
+					
+					<h:column>
+					 	<f:facet name="header">ID:</f:facet>
+					 	<h:outputLabel value="#{lanc.id}"/>
+					</h:column>
+					
+					<h:column>
+					 	<f:facet name="header">Nº Nota Fiscal:</f:facet>
+					 	<h:outputLabel value="#{lanc.numeroNotaFiscal}"/>
+					</h:column>
+					
+					<h:column>
+					 	<f:facet name="header">Empresa Origem:</f:facet>
+					 	<h:outputLabel value="#{lanc.empresaOrigem}"/>
+					</h:column>
+					
+					<h:column>
+					 	<f:facet name="header">Empresa Destino:</f:facet>
+					 	<h:outputLabel value="#{lanc.empresaDestino}"/>
+					</h:column>
+					
+					<h:column>
+					 	<f:facet name="header">Usuário:</f:facet>
+					 	<h:outputLabel value="#{lanc.usuario.nome}"/>
+					</h:column>
+					
+				</h:dataTable>
+				
 			</h:form>
 			
 		</h:form>
