@@ -42,7 +42,7 @@
 					<h:commandButton value="Novo" action="#{lancamentoBean.novo}" image="//resources/img/novo.png" title="Novo" style="margin-left:10px;" />
 					<h:commandButton value="Limpar" type="reset" image="//resources/img/resetar.png" title="Resetar" style="margin-left:10px;" />
 					<h:commandButton value="Salvar" action="#{lancamentoBean.salvar}" image="//resources/img/salvar.png" title="Salvar" style="margin-left:10px;" /> 
-					<h:commandButton value="Deletar" action="#{lancamentoBean.remove}" image="//resources/img/deletar.png" title="Deletar" style="margin-left:10px;" />
+					<h:commandButton value="Deletar" action="#{lancamentoBean.remove}" image="//resources/img/deletar.png" title="Deletar" style="margin-left:10px;" rendered="#{pessoaBean.permiteAcesso('ADMIN')}" />
 					</h:panelGroup>
 				</h:panelGrid>
 				
@@ -84,7 +84,7 @@
 					
 					<h:column>
 						<f:facet name="header">Excluir</f:facet>
-					<h:commandLink action="#{lancamentoBean.remove}">
+					<h:commandLink action="#{lancamentoBean.remove}" rendered="#{pessoaBean.permiteAcesso('ADMIN')}" >
 						<f:setPropertyActionListener target="#{lancamentoBean.lancamento}" value="#{lanc}" />
 						<h:graphicImage value="//resources/img/deletar-base.png" title="Excluir" />
 					</h:commandLink>
