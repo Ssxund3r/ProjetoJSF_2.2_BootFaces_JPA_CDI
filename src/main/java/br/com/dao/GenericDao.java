@@ -63,6 +63,7 @@ public class GenericDao<E> {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<E> getListEntity(Class<E> entidade) {
 		EntityManager entityManager = JPAUtil.getEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();

@@ -13,8 +13,8 @@ import javax.servlet.http.HttpSession;
 
 import br.com.dao.GenericDao;
 import br.com.entidades.Pessoa;
-import br.com.repository.IDAOPessoa;
-import br.com.repository.IDAOPessoaImpl;
+import br.com.repository.IDaoPessoa;
+import br.com.repository.IDaoPessoaImpl;
 
 @ViewScoped
 @ManagedBean(name = "pessoaBean")
@@ -24,7 +24,7 @@ public class PessoaBean {
 	private GenericDao<Pessoa> genericDao = new GenericDao<Pessoa>();
 	private List<Pessoa> pessoas = new ArrayList<Pessoa>();
 
-	private IDAOPessoa idaoPessoa = new IDAOPessoaImpl();
+	private IDaoPessoa idaoPessoa = new IDaoPessoaImpl();
 
 	public String salvar() {
 		pessoa = genericDao.merge(pessoa);

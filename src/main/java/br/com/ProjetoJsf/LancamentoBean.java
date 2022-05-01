@@ -35,7 +35,7 @@ public class LancamentoBean {
 		Pessoa pessoaUser = (Pessoa) session.getAttribute("usuarioLogado");
 
 		lancamento.setUsuario(pessoaUser);
-		genericDao.salvar(lancamento);
+		lancamento = genericDao.merge(lancamento);
 
 		carregarLancamentos();
 
