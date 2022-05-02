@@ -72,6 +72,14 @@
 					<f:selectItem itemValue="CONTADOR(A)" itemLabel="Contador(a)"></f:selectItem>
 				</h:selectOneMenu>	
 				
+			<h:outputLabel value="Experiência Programador:" />
+			<h:selectOneRadio value="#{pessoaBean.pessoa.nivelProgramador}" layout="pageDirection">
+				<f:selectItem itemValue="J" itemLabel="Júnior"/>
+				<f:selectItem itemValue="P" itemLabel="Pleno"/>
+				<f:selectItem itemValue="S" itemLabel="Sênior"/>
+				<f:selectItem itemValue="E" itemLabel="Expecialista"/>
+			</h:selectOneRadio>
+				
 			<h:outputLabel />
 				<h:panelGroup >
 					<h:commandButton value="Novo" action="#{pessoaBean.novo}" image="//resources/img/novo.png" title="Novo" style="margin-right: 5px;"/>

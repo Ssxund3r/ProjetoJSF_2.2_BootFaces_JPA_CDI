@@ -28,24 +28,25 @@ public class Pessoa implements Serializable {
 	private Date dataNascimento;
 
 	private String sexo;
-	
+	private String nivelProgramador;
+
 	private String[] frameworks;
-	
+
 	private Boolean ativo;
-	
+
 	private String login;
 	private String senha;
-	
+
 	private String perfilUser;
-	
+
 	public void setPerfilUser(String perfilUser) {
 		this.perfilUser = perfilUser;
 	}
-	
+
 	public String getPerfilUser() {
 		return perfilUser;
 	}
-	
+
 	public void setLogin(String login) {
 		this.login = login;
 	}
@@ -128,6 +129,14 @@ public class Pessoa implements Serializable {
 
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
+	}
+
+	public void setNivelProgramador(String nivelProgramador) {
+		this.nivelProgramador = nivelProgramador;
+	}
+
+	public String getNivelProgramador() {
+		return nivelProgramador;
 	}
 
 	@Override
