@@ -21,7 +21,10 @@
 			<h:commandLink value="Trocar Usuário" action="index" style="margin-left: 1cm;" />
 			</h:form>
 		
-	<h:form id="formPessoa" rendered="#{pessoaBean.permiteAcesso('ADMIN')}" >
+		<h:form id="formPessoa" rendered="#{pessoaBean.permiteAcesso('ADMIN')}" >
+			
+			<h:messages infoStyle="color:blue;" />
+			
 	        <h:panelGrid columns="2" style="border-spacing:15px 10px;">
 	        	<f:facet name="header">
 	        		<h:outputText value="Cadastro de Usuários - JSF" />
