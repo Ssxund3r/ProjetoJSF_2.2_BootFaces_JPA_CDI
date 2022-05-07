@@ -79,6 +79,16 @@
 				<f:selectItem itemValue="S" itemLabel="Sênior"/>
 				<f:selectItem itemValue="E" itemLabel="Expecialista"/>
 			</h:selectOneRadio>
+			
+			<h:outputLabel value="Linguagens Programação:" />
+			<h:selectManyCheckbox value="#{pessoaBean.pessoa.linguagensProg}" >
+				<f:selectItem itemValue="1" itemLabel="Java" />
+				<f:selectItem itemValue="2" itemLabel="PHP" />
+				<f:selectItem itemValue="3" itemLabel="Python" />
+				<f:selectItem itemValue="4" itemLabel="Ruby" />
+				<f:selectItem itemValue="5" itemLabel="C#" />
+				<f:selectItem itemValue="6" itemLabel="Cobol" />
+			</h:selectManyCheckbox>
 				
 			<h:outputLabel />
 				<h:panelGroup >
@@ -86,12 +96,10 @@
 					<h:commandButton value="Limpar" type="reset" image="//resources/img/resetar.png" title="Resetar" style="margin-right: 5px;" />
 					<h:commandButton value="Salvar" action="#{pessoaBean.salvar}" image="//resources/img/salvar.png" title="Salvar" style="margin-right: 5px;" /> 
 					<h:commandButton value="Deletar" action="#{pessoaBean.remove}" image="//resources/img/deletar.png" title="Deletar" style="margin-right: 5px;" rendered="#{pessoaBean.permiteAcesso('ADMIN')}" />
-					
 				</h:panelGroup>
 			</h:panelGrid>
-			
+	
 			<h:dataTable value="#{pessoaBean.pessoas}" var="pessoa" border="3" cellpadding="6" style="background:beige; ">
-				
 				<f:facet name="header">
 					Lista de usuários cadastrados
 				</f:facet>
