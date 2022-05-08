@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Pessoa implements Serializable {
@@ -19,9 +20,12 @@ public class Pessoa implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-
+	
 	private String nome;
+	
 	private String sobrenome;
+
+	@NotNull(message = "O campo é obrigatório!")
 	private Integer idade;
 
 	@Temporal(TemporalType.DATE)
