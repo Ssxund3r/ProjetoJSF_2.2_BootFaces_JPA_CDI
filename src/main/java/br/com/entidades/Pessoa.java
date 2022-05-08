@@ -25,7 +25,7 @@ public class Pessoa implements Serializable {
 	
 	private String sobrenome;
 
-	@NotNull(message = "O campo é obrigatório!")
+	@NotNull(message = "O campo Idade é obrigatório!")
 	private Integer idade;
 
 	@Temporal(TemporalType.DATE)

@@ -43,7 +43,6 @@
 					<f:selectItem itemValue="NAO" itemLabel="[-Selecione-]" noSelectionOption="true" />
 					<f:selectItem itemValue="MASCULINO"	itemLabel="Masculino"></f:selectItem >
 					<f:selectItem itemValue="FEMININO" itemLabel="Feminino"></f:selectItem >
-					<h:message for="campoSexo" styleClass="color:red;" />
 				</h:selectOneMenu >
 				
 				<h:outputLabel value="Data de Nascimento:" />
@@ -98,13 +97,19 @@
 				
 			<h:outputLabel />
 				<h:panelGroup >
-					<h:commandButton value="Novo" action="#{pessoaBean.novo}" image="//resources/img/novo.png" title="Novo" style="margin-right: 5px;"/>
-					<h:commandButton value="Limpar" type="reset" image="//resources/img/resetar.png" title="Resetar" style="margin-right: 5px;" />
+					<h:commandButton id="botaoNovo" value="Novo" action="#{pessoaBean.novo}" image="//resources/img/novo.png" title="Novo" style="margin-right: 5px;">
+						<f:ajax execute="botaoNovo" render="@form" />
+					</h:commandButton>
+					<h:commandButton id="botaoLimpar" value="Limpar" action="#{pessoaBean.limpar}" image="//resources/img/resetar.png" title="Resetar" style="margin-right: 5px;" >
+						<f:ajax execute="botaoLimpar" render="@form" />
+					</h:commandButton>
 					<h:commandButton value="Salvar" action="#{pessoaBean.salvar}" image="//resources/img/salvar.png" title="Salvar" style="margin-right: 5px;" /> 
 					<h:commandButton value="Deletar" action="#{pessoaBean.remove}" image="//resources/img/deletar.png" title="Deletar" style="margin-right: 5px;" rendered="#{pessoaBean.permiteAcesso('ADMIN')}" />
 				</h:panelGroup>
-			</h:panelGrid>
-	
+			  </h:panelGrid>
+			</h:form>
+			
+			<h:form id="formTable">
 			<h:dataTable value="#{pessoaBean.pessoas}" var="pessoa" border="3" cellpadding="6" style="background:beige; ">
 				<f:facet name="header">
 					Lista de usuários cadastrados
@@ -146,7 +151,6 @@
 						<h:graphicImage value="//resources/img/deletar-base.png" title="Excluir" />
 					</h:commandLink>
 				</h:column>
-
 			</h:dataTable>
 		</h:form>
 	</h:body>

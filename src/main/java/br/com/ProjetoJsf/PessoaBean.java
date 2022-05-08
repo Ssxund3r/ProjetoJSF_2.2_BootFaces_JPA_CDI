@@ -42,9 +42,17 @@ public class PessoaBean {
 	}
 
 	public String novo() {
+		/*Executa um processo antes de um novo registro*/
 		pessoa = new Pessoa();
 		return "";
 	}
+	
+	public String limpar() {
+		/*Executa um processo antes de limpar o registro*/
+		pessoa = new Pessoa();
+		return "";
+	}
+	
 
 	public String remove() {
 		genericDao.deletePorID(pessoa);
