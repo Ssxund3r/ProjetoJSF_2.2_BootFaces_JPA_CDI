@@ -36,27 +36,26 @@
 				<h:outputLabel value="Idade:" />
 				<h:inputText value="#{pessoaBean.pessoa.idade}" />
 				
-				<h:outputLabel value="Sexo:"/>
-				<h:selectOneMenu id="campoSexo" value="#{pessoaBean.pessoa.sexo}" required="false">
+				<h:outputLabel value="Sexo:" />
+				<h:selectOneMenu id="campoSexo" value="#{pessoaBean.pessoa.sexo}" required="false" >
 					<f:selectItem itemValue="NAO" itemLabel="[-Selecione-]" noSelectionOption="true" />
-					<f:selectItem itemValue="MASCULINO"	itemLabel="Masculino"></f:selectItem>
-					<f:selectItem itemValue="FEMININO" itemLabel="Feminino"></f:selectItem>
-				</h:selectOneMenu>
+					<f:selectItem itemValue="MASCULINO"	itemLabel="Masculino"></f:selectItem >
+					<f:selectItem itemValue="FEMININO" itemLabel="Feminino"></f:selectItem >
+				</h:selectOneMenu >
 				
 				<h:outputLabel value="Data de Nascimento:" />
-				<h:inputText value="#{pessoaBean.pessoa.dataNascimento}" >
-					<f:convertDateTime pattern="dd/MM/yyyy" dateStyle="full" locale="pt_BR_#Latn"/>
-				</h:inputText>
+				<h:inputText value="#{pessoaBean.pessoa.dataNascimento}" converterMessage="Data de nascimento errada!" >
+					<f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR_#Latn" timeZone="GMT-03:00" />
+				</h:inputText >
 				
-				
-				<h:outputLabel value="Frameworks:"/>
-				<h:selectManyMenu id="campoFrameWorks" value="#{pessoaBean.pessoa.frameworks}" style="height:50px;">
-					<f:selectItem itemValue="Hibernate"/>
-					<f:selectItem itemValue="Spring Mvc"/>
-					<f:selectItem itemValue="JPA"/>
-					<f:selectItem itemValue="PrimeFaces"/>
-					<f:selectItem itemValue="JSF"/>
-				</h:selectManyMenu>
+				<h:outputLabel value="Frameworks:" />
+				<h:selectManyMenu id="campoFrameWorks" value="#{pessoaBean.pessoa.frameworks}" style="height:50px;" >
+					<f:selectItem itemValue="Hibernate" />
+					<f:selectItem itemValue="Spring Mvc" />
+					<f:selectItem itemValue="JPA" />
+					<f:selectItem itemValue="PrimeFaces" />
+					<f:selectItem itemValue="JSF" />
+				</h:selectManyMenu >
 				
 			<h:outputLabel value="Ativo:"/>	
 			<h:selectBooleanCheckbox value="#{pessoaBean.pessoa.ativo}" />
