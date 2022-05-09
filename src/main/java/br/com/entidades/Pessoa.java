@@ -20,9 +20,9 @@ public class Pessoa implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	private String nome;
-	
+
 	private String sobrenome;
 
 	@NotNull(message = "O campo Idade é obrigatório!")
@@ -38,6 +38,7 @@ public class Pessoa implements Serializable {
 	private Boolean ativo;
 
 	private String login;
+
 	private String senha;
 
 	private String perfilUser;
@@ -45,6 +46,16 @@ public class Pessoa implements Serializable {
 	private String nivelProgramador;
 
 	private Integer[] linguagensProg;
+
+	private String cep;
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
+	public String getCep() {
+		return cep;
+	}
 
 	public void setPerfilUser(String perfilUser) {
 		this.perfilUser = perfilUser;

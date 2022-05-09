@@ -9,6 +9,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -119,5 +120,10 @@ public class PessoaBean {
 
 		return pessoaUser.getPerfilUser().equals(acesso);
 	}
+	
+	public void pesquisaCep(AjaxBehaviorEvent event) {
+		System.out.println("Metodo pesquisa cep chamado CEP:" + pessoa.getCep());
+	} 
+	
 
 }
