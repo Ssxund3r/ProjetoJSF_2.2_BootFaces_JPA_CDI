@@ -49,6 +49,28 @@ public class Pessoa implements Serializable {
 	private Integer[] linguagensProg;
 
 	private String cep;
+	
+	public Pessoa() {
+
+	}
+	
+	public Pessoa(String nome, String sobrenome, Integer idade, Date dataNascimento, String sexo, String[] frameworks,
+			Boolean ativo, String login, String senha, String perfilUser, String nivelProgramador,
+			Integer[] linguagensProg, String cep) {
+		this.nome = nome;
+		this.sobrenome = sobrenome;
+		this.idade = idade;
+		this.dataNascimento = dataNascimento;
+		this.sexo = sexo;
+		this.frameworks = frameworks;
+		this.ativo = ativo;
+		this.login = login;
+		this.senha = senha;
+		this.perfilUser = perfilUser;
+		this.nivelProgramador = nivelProgramador;
+		this.linguagensProg = linguagensProg;
+		this.cep = cep;
+	}
 
 	public void setCep(String cep) {
 		this.cep = cep;
@@ -80,10 +102,6 @@ public class Pessoa implements Serializable {
 
 	public String getSenha() {
 		return senha;
-	}
-
-	public Pessoa() {
-
 	}
 
 	public Long getId() {
