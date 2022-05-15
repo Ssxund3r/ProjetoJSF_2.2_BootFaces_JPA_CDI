@@ -42,4 +42,12 @@ public class TestJPA {
 		System.out.println(pessoa);
 		
 	}
+	
+	@Test
+	public void testeConsultaIdAlternatio() {
+		GenericDao<Pessoa> genericDao = new GenericDao<Pessoa>();
+		Pessoa pessoa = genericDao.consultaAlternativa(74L, Pessoa.class);
+		
+		System.out.println(pessoa);
+	}
 }

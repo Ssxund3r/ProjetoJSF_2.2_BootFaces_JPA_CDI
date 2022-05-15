@@ -39,12 +39,20 @@ public class GenericDao<E> {
 
 	}
 	
+	@SuppressWarnings("unchecked")
 	public E consulta(E entidade) {
 		Object id = JPAUtil.getPrimaryKey(entidade);
 		
 		E e = (E) entityManager.find(entidade.getClass(), id);
 		
 		return e;
+	}
+	
+	public E consultaAlternativa(Long id, Class<E> entidade) { /*Versão alternativa para Consulta do ID - Ao invés de passar 2
+																 classes, então passamos 2 parâmetros.*/
+		E e = (E) entityManager.find(entidade, id);
+		return e;
+
 	}
 	
 	public void delete(E entidade) {
@@ -86,7 +94,4 @@ public class GenericDao<E> {
 
 		return retorno;
 	}
-	
-	
-
 }
