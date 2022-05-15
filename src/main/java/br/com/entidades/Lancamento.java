@@ -17,7 +17,7 @@ public class Lancamento implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	private String numeroNotaFiscal;
+	private Integer numeroNotaFiscal;
 
 	private String empresaOrigem;
 
@@ -36,11 +36,11 @@ public class Lancamento implements Serializable {
 		this.id = id;
 	}
 
-	public String getNumeroNotaFiscal() {
+	public Integer getNumeroNotaFiscal() {
 		return numeroNotaFiscal;
 	}
 
-	public void setNumeroNotaFiscal(String numeroNotaFiscal) {
+	public void setNumeroNotaFiscal(Integer numeroNotaFiscal) {
 		this.numeroNotaFiscal = numeroNotaFiscal;
 	}
 

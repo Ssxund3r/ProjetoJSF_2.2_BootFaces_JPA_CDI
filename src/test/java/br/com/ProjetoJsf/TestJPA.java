@@ -112,7 +112,7 @@ public class TestJPA {
 
 		lancamento.setEmpresaOrigem("abc");
 		lancamento.setEmpresaDestino("cba");
-		lancamento.setNumeroNotaFiscal("12");
+		lancamento.setNumeroNotaFiscal(12);
 		lancamento.setUsuario(pessoa);
 
 		genericDao.salvar(lancamento);
