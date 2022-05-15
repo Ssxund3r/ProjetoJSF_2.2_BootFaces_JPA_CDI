@@ -32,7 +32,7 @@ public class TestJPA {
 		genericDao.salvar(pessoa);
 
 	}
-
+	
 	@Test
 	public void testInserirNovoUsuario() {
 		GenericDao<Pessoa> genericDao = new GenericDao<Pessoa>();
