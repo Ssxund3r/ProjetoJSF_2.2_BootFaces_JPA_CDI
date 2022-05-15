@@ -8,10 +8,12 @@ import javax.persistence.EntityTransaction;
 import br.com.jpautil.JPAUtil;
 
 public class GenericDao<E> {
-
+	
+	private EntityManager entityManager = JPAUtil.getEntityManager();
+	
 	public void salvar(E entidade) {
 
-		EntityManager entityManager = JPAUtil.getEntityManager();
+		entityManager = JPAUtil.getEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();
 		entityTransaction.begin();
 
@@ -24,7 +26,7 @@ public class GenericDao<E> {
 
 	public E merge(E entidade) {
 
-		EntityManager entityManager = JPAUtil.getEntityManager();
+		entityManager = JPAUtil.getEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();
 		entityTransaction.begin();
 
@@ -36,9 +38,17 @@ public class GenericDao<E> {
 		return retorno;
 
 	}
-
+	
+	public E consulta(E entidade) {
+		Object id = JPAUtil.getPrimaryKey(entidade);
+		
+		E e = (E) entityManager.find(entidade.getClass(), id);
+		
+		return e;
+	}
+	
 	public void delete(E entidade) {
-		EntityManager entityManager = JPAUtil.getEntityManager();
+		entityManager = JPAUtil.getEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();
 		entityTransaction.begin();
 
@@ -50,7 +60,7 @@ public class GenericDao<E> {
 	}
 
 	public void deletePorID(E entidade) {
-		EntityManager entityManager = JPAUtil.getEntityManager();
+		entityManager = JPAUtil.getEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();
 		entityTransaction.begin();
 

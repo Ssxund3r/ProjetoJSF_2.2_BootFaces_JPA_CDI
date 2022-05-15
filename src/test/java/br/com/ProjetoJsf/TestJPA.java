@@ -30,5 +30,16 @@ public class TestJPA {
 		genericDao.salvar(pessoa);
 		
 	}
-
+	
+	@Test
+	public void testConsultaId() {
+		GenericDao<Pessoa> genericDao = new GenericDao<Pessoa>();
+		Pessoa pessoa = new Pessoa();
+		
+		pessoa.setId(74L);	
+		pessoa = genericDao.consulta(pessoa);
+		
+		System.out.println(pessoa);
+		
+	}
 }
