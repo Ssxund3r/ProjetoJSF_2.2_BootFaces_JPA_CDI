@@ -36,7 +36,7 @@ public class TestJPA {
 		GenericDao<Pessoa> genericDao = new GenericDao<Pessoa>();
 		Pessoa pessoa = new Pessoa();
 		
-		pessoa.setId(74L);	
+		pessoa.setId(76L);	
 		pessoa = genericDao.consulta(pessoa);
 		
 		System.out.println(pessoa);
@@ -46,8 +46,20 @@ public class TestJPA {
 	@Test
 	public void testeConsultaIdAlternatio() {
 		GenericDao<Pessoa> genericDao = new GenericDao<Pessoa>();
-		Pessoa pessoa = genericDao.consultaAlternativa(74L, Pessoa.class);
+		Pessoa pessoa = genericDao.consultaAlternativa(76L, Pessoa.class);
 		
 		System.out.println(pessoa);
 	}
+	
+	@Test
+	public void testDeletarPorID() {
+		GenericDao<Pessoa> genericDao = new GenericDao<Pessoa>();
+		Pessoa pessoa = genericDao.consultaAlternativa(76L, Pessoa.class);
+		
+		genericDao.deletePorID(pessoa);
+		System.out.println(pessoa);
+		
+	}
+	
+	
 }
