@@ -33,11 +33,12 @@ public class GeradorMassaFilaThreadImpl extends Thread {
 					System.out.println(processo.getLogin());
 					System.out.println(processo.getSenha());
 					System.out.println(processo.getPerfilUser());
+					System.out.println("-----------------");
 					
 
 					try {
-						Thread.sleep(500);
-					} catch (InterruptedException e) { // Dar um tempo para descarga de memoria
+						Thread.sleep(100);
+					} catch (InterruptedException e) { //Dar um tempo para descarga de memoria
 						e.printStackTrace();
 					}
 
