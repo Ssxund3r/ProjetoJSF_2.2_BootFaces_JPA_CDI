@@ -36,7 +36,7 @@ public class GeradorMassas {
 	public void gerarContasElderScroll() {
 		GenericDao genericDao = new GenericDao();
 		Pessoa pessoa = new Pessoa();
-		pessoa.setNome(faker.elderScrolls().city());
+		pessoa.setNome(faker.elderScrolls().firstName());
 		pessoa.setSobrenome(faker.elderScrolls().dragon());
 		pessoa.setIdade(faker.number().numberBetween(18, 99));
 		pessoa.setLogin(faker.name().username());

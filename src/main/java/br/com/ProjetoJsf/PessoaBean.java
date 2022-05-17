@@ -1,5 +1,10 @@
 package br.com.ProjetoJsf;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,17 +48,16 @@ public class PessoaBean {
 	}
 
 	public String novo() {
-		/*Executa um processo antes de um novo registro*/
+		/* Executa um processo antes de um novo registro */
 		pessoa = new Pessoa();
 		return "";
 	}
-	
+
 	public String limpar() {
-		/*Executa um processo antes de limpar o registro*/
+		/* Executa um processo antes de limpar o registro */
 		pessoa = new Pessoa();
 		return "";
 	}
-	
 
 	public String remove() {
 		genericDao.deletePorID(pessoa);
@@ -120,10 +124,29 @@ public class PessoaBean {
 
 		return pessoaUser.getPerfilUser().equals(acesso);
 	}
-	
+
 	public void pesquisaCep(AjaxBehaviorEvent event) {
-		System.out.println("Metodo pesquisa cep chamado CEP:" + pessoa.getCep());
-	} 
-	
+
+		try {
+			URL url = new URL("https://viacep.com.br/ws/" + pessoa.getCep() + "/json");
+			URLConnection connection = url.openConnection();
+			InputStream inputStream = connection.getInputStream();
+			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
+
+			String cep = "";
+			StringBuilder jsonCep = new StringBuilder();
+
+			while ((cep = bufferedReader.readLine()) != null) {
+				jsonCep.append(cep);
+			}
+			
+			System.out.println(jsonCep);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			mostrarMsg("Erro ao consultar cep!");
+		}
+
+	}
 
 }
