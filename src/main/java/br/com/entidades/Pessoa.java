@@ -49,14 +49,24 @@ public class Pessoa implements Serializable {
 	private Integer[] linguagensProg;
 
 	private String cep;
-	
+	private String logradouro;
+	private String bairro;
+	private String localidade;
+	private String uf;
+	private String unidade;
+	private String ibge;
+	private String gia;
+
 	public Pessoa() {
 
 	}
-	
-	public Pessoa(String nome, String sobrenome, Integer idade, Date dataNascimento, String sexo, String[] frameworks,
-			Boolean ativo, String login, String senha, String perfilUser, String nivelProgramador,
-			Integer[] linguagensProg, String cep) {
+
+	public Pessoa(Long id, String nome, String sobrenome, Integer idade, Date dataNascimento, String sexo,
+			String[] frameworks, Boolean ativo, String login, String senha, String perfilUser, String nivelProgramador,
+			Integer[] linguagensProg, String cep, String logradouro, String bairro, String localidade, String uf,
+			String unidade, String ibge, String gia) {
+		super();
+		this.id = id;
 		this.nome = nome;
 		this.sobrenome = sobrenome;
 		this.idade = idade;
@@ -70,6 +80,69 @@ public class Pessoa implements Serializable {
 		this.nivelProgramador = nivelProgramador;
 		this.linguagensProg = linguagensProg;
 		this.cep = cep;
+		this.logradouro = logradouro;
+		this.bairro = bairro;
+		this.localidade = localidade;
+		this.uf = uf;
+		this.unidade = unidade;
+		this.ibge = ibge;
+		this.gia = gia;
+	}
+
+	public String getLogradouro() {
+		return logradouro;
+	}
+
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+	public String getLocalidade() {
+		return localidade;
+	}
+
+	public void setLocalidade(String localidade) {
+		this.localidade = localidade;
+	}
+
+	public String getUf() {
+		return uf;
+	}
+
+	public void setUf(String uf) {
+		this.uf = uf;
+	}
+
+	public String getUnidade() {
+		return unidade;
+	}
+
+	public void setUnidade(String unidade) {
+		this.unidade = unidade;
+	}
+
+	public String getIbge() {
+		return ibge;
+	}
+
+	public void setIbge(String ibge) {
+		this.ibge = ibge;
+	}
+
+	public String getGia() {
+		return gia;
+	}
+
+	public void setGia(String gia) {
+		this.gia = gia;
 	}
 
 	public void setCep(String cep) {
@@ -207,7 +280,9 @@ public class Pessoa implements Serializable {
 				+ ", dataNascimento=" + dataNascimento + ", sexo=" + sexo + ", frameworks="
 				+ Arrays.toString(frameworks) + ", ativo=" + ativo + ", login=" + login + ", senha=" + senha
 				+ ", perfilUser=" + perfilUser + ", nivelProgramador=" + nivelProgramador + ", linguagensProg="
-				+ Arrays.toString(linguagensProg) + ", cep=" + cep + "]";
+				+ Arrays.toString(linguagensProg) + ", cep=" + cep + ", logradouro=" + logradouro + ", bairro=" + bairro
+				+ ", localidade=" + localidade + ", uf=" + uf + ", unidade=" + unidade + ", ibge=" + ibge + ", gia="
+				+ gia + "]";
 	}
 
 }
