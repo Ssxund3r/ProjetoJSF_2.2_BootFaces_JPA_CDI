@@ -1,7 +1,6 @@
 package br.com.entidades;
 
 import java.io.Serializable;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.Objects;
 
@@ -50,43 +49,41 @@ public class Pessoa implements Serializable {
 
 	private String cep;
 	private String logradouro;
+	private String complemento;
 	private String bairro;
 	private String localidade;
 	private String uf;
-	private String unidade;
 	private String ibge;
 	private String gia;
+	private String ddd;
+	private String siafi;
 
 	public Pessoa() {
 
 	}
 
-	public Pessoa(Long id, String nome, String sobrenome, Integer idade, Date dataNascimento, String sexo,
-			String[] frameworks, Boolean ativo, String login, String senha, String perfilUser, String nivelProgramador,
-			Integer[] linguagensProg, String cep, String logradouro, String bairro, String localidade, String uf,
-			String unidade, String ibge, String gia) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.sobrenome = sobrenome;
-		this.idade = idade;
-		this.dataNascimento = dataNascimento;
-		this.sexo = sexo;
-		this.frameworks = frameworks;
-		this.ativo = ativo;
-		this.login = login;
-		this.senha = senha;
-		this.perfilUser = perfilUser;
-		this.nivelProgramador = nivelProgramador;
-		this.linguagensProg = linguagensProg;
-		this.cep = cep;
-		this.logradouro = logradouro;
-		this.bairro = bairro;
-		this.localidade = localidade;
-		this.uf = uf;
-		this.unidade = unidade;
-		this.ibge = ibge;
-		this.gia = gia;
+	public String getDdd() {
+		return ddd;
+	}
+
+	public void setDdd(String ddd) {
+		this.ddd = ddd;
+	}
+
+	public String getSiafi() {
+		return siafi;
+	}
+
+	public void setSiafi(String siafi) {
+		this.siafi = siafi;
+	}
+
+	public String getComplemento() {
+		return complemento;
+	}
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
 	}
 
 	public String getLogradouro() {
@@ -119,14 +116,6 @@ public class Pessoa implements Serializable {
 
 	public void setUf(String uf) {
 		this.uf = uf;
-	}
-
-	public String getUnidade() {
-		return unidade;
-	}
-
-	public void setUnidade(String unidade) {
-		this.unidade = unidade;
 	}
 
 	public String getIbge() {
@@ -272,17 +261,6 @@ public class Pessoa implements Serializable {
 			return false;
 		Pessoa other = (Pessoa) obj;
 		return Objects.equals(id, other.id);
-	}
-
-	@Override
-	public String toString() {
-		return "Pessoa [id=" + id + ", nome=" + nome + ", sobrenome=" + sobrenome + ", idade=" + idade
-				+ ", dataNascimento=" + dataNascimento + ", sexo=" + sexo + ", frameworks="
-				+ Arrays.toString(frameworks) + ", ativo=" + ativo + ", login=" + login + ", senha=" + senha
-				+ ", perfilUser=" + perfilUser + ", nivelProgramador=" + nivelProgramador + ", linguagensProg="
-				+ Arrays.toString(linguagensProg) + ", cep=" + cep + ", logradouro=" + logradouro + ", bairro=" + bairro
-				+ ", localidade=" + localidade + ", uf=" + uf + ", unidade=" + unidade + ", ibge=" + ibge + ", gia="
-				+ gia + "]";
 	}
 
 }

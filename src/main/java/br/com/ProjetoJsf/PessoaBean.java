@@ -93,6 +93,22 @@ public class PessoaBean {
 	public List<Pessoa> getPessoas() {
 		return pessoas;
 	}
+	
+	public String deslogar() {
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		ExternalContext externalContext = context.getExternalContext();
+
+		HttpServletRequest req = (HttpServletRequest) externalContext.getRequest();
+		HttpSession session = req.getSession();
+
+		session.removeAttribute("usuarioLogado");
+		
+		req = (HttpServletRequest) context.getCurrentInstance().getExternalContext().getRequest();
+		req.getSession().invalidate();
+		
+		return "index.jsf";
+	}	
 
 	public String logar() {
 
@@ -130,7 +146,7 @@ public class PessoaBean {
 	public void pesquisaCep(AjaxBehaviorEvent event) {
 
 		try {
-			URL url = new URL("https://viacep.com.br/ws/" + pessoa.getCep() + "/json");
+			URL url = new URL("http://viacep.com.br/ws/"+pessoa.getCep()+"/json/");
 			URLConnection connection = url.openConnection();
 			InputStream inputStream = connection.getInputStream();
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
@@ -141,19 +157,20 @@ public class PessoaBean {
 			while ((cep = bufferedReader.readLine()) != null) {
 				jsonCep.append(cep);
 			}
-			
+
 			Pessoa gsonAux = new Gson().fromJson(jsonCep.toString(), Pessoa.class);
-			
+
 			pessoa.setCep(gsonAux.getCep());
-			pessoa.setBairro(gsonAux.getBairro());
 			pessoa.setLogradouro(gsonAux.getLogradouro());
+			pessoa.setComplemento(gsonAux.getComplemento());
+			pessoa.setBairro(gsonAux.getBairro());
 			pessoa.setLocalidade(gsonAux.getLocalidade());
 			pessoa.setUf(gsonAux.getUf());
-			pessoa.setUnidade(gsonAux.getUnidade());
 			pessoa.setIbge(gsonAux.getIbge());
 			pessoa.setGia(gsonAux.getGia());
+			pessoa.setDdd(gsonAux.getDdd());
+			pessoa.setSiafi(gsonAux.getSiafi());
 			
-			System.out.println();
 
 		} catch (Exception e) {
 			e.printStackTrace();
