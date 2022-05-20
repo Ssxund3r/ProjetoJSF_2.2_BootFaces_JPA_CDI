@@ -21,12 +21,18 @@ public class Pessoa implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@NotNull(message = "O campo Idade é obrigatório!")
 	private String nome;
 
+	@NotNull(message = "O campo Idade é obrigatório!")
 	private String sobrenome;
 
 	@NotNull(message = "O campo Idade é obrigatório!")
 	private Integer idade;
+
+	private String cpf;
+
+	private String titEleitoral;
 
 	@Temporal(TemporalType.DATE)
 	private Date dataNascimento = new Date();
@@ -196,6 +202,22 @@ public class Pessoa implements Serializable {
 
 	public void setIdade(Integer idade) {
 		this.idade = idade;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public String getTitEleitoral() {
+		return titEleitoral;
+	}
+
+	public void setTitEleitoral(String titEleitoral) {
+		this.titEleitoral = titEleitoral;
 	}
 
 	public void setSexo(String sexo) {

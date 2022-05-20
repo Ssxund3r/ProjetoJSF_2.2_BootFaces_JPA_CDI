@@ -94,6 +94,7 @@ public class PessoaBean {
 		return pessoas;
 	}
 	
+	@SuppressWarnings("static-access")
 	public String deslogar() {
 		
 		FacesContext context = FacesContext.getCurrentInstance();
