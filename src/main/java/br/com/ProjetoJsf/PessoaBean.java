@@ -15,6 +15,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
+import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -34,6 +35,8 @@ public class PessoaBean {
 	private List<Pessoa> pessoas = new ArrayList<Pessoa>();
 
 	private IDaoPessoa idaoPessoa = new IDaoPessoaImpl();
+
+	private List<SelectItem> estados;
 
 	public String salvar() {
 		pessoa = genericDao.merge(pessoa);
@@ -93,10 +96,10 @@ public class PessoaBean {
 	public List<Pessoa> getPessoas() {
 		return pessoas;
 	}
-	
+
 	@SuppressWarnings("static-access")
 	public String deslogar() {
-		
+
 		FacesContext context = FacesContext.getCurrentInstance();
 		ExternalContext externalContext = context.getExternalContext();
 
@@ -104,12 +107,12 @@ public class PessoaBean {
 		HttpSession session = req.getSession();
 
 		session.removeAttribute("usuarioLogado");
-		
+
 		req = (HttpServletRequest) context.getCurrentInstance().getExternalContext().getRequest();
 		req.getSession().invalidate();
-		
+
 		return "index.jsf";
-	}	
+	}
 
 	public String logar() {
 
@@ -147,7 +150,7 @@ public class PessoaBean {
 	public void pesquisaCep(AjaxBehaviorEvent event) {
 
 		try {
-			URL url = new URL("http://viacep.com.br/ws/"+pessoa.getCep()+"/json/");
+			URL url = new URL("http://viacep.com.br/ws/" + pessoa.getCep() + "/json/");
 			URLConnection connection = url.openConnection();
 			InputStream inputStream = connection.getInputStream();
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
@@ -171,13 +174,17 @@ public class PessoaBean {
 			pessoa.setGia(gsonAux.getGia());
 			pessoa.setDdd(gsonAux.getDdd());
 			pessoa.setSiafi(gsonAux.getSiafi());
-			
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			mostrarMsg("Erro ao consultar cep!");
 		}
 
+	}
+
+	public List<SelectItem> getEstados() {
+		estados = idaoPessoa.listaEstados();
+		return estados;
 	}
 
 }
