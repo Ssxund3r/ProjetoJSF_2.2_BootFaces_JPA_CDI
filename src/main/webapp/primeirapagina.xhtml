@@ -48,7 +48,7 @@
 				
 				<h:outputLabel value="Sexo:" />
 				<h:selectOneMenu id="campoSexo" value="#{pessoaBean.pessoa.sexo}" required="false" >
-					<f:selectItem itemValue="NAO" itemLabel="[-Selecione-]" noSelectionOption="true" />
+					<f:selectItem itemValue="NAO" itemLabel="Selecione" noSelectionOption="true" />
 					<f:selectItem itemValue="MASCULINO"	itemLabel="Masculino"></f:selectItem >
 					<f:selectItem itemValue="FEMININO" itemLabel="Feminino"></f:selectItem >
 				</h:selectOneMenu >
@@ -112,7 +112,7 @@
 			
 			<h:outputLabel value="Perfil:" />
 				<h:selectOneMenu id="perfil" value="#{pessoaBean.pessoa.perfilUser}" required="false">
-					<f:selectItem itemValue="NAO" itemLabel="[-Selecione-]" noSelectionOption="true" />
+					<f:selectItem itemValue="NAO" itemLabel="Selecione" noSelectionOption="true" />
 					<f:selectItem itemValue="ADMIN"	itemLabel="Administrador"></f:selectItem>
 					<f:selectItem itemValue="SECRETARIO(A)" itemLabel="Secretário(a)"></f:selectItem>
 					<f:selectItem itemValue="RECEPCIONISTA" itemLabel="Recepcionista"></f:selectItem>
@@ -138,9 +138,11 @@
 			</h:selectManyCheckbox>
 			
 			<h:outputLabel value="Estados:" />
-			<h:selectOneMenu value="#{pessoaBean.pessoa.estados}" >
-				<f:selectItems value="#{pessoaBean.estados}"/>
-			</h:selectOneMenu>
+			<h:selectOneMenu value="#{pessoaBean.pessoa.estados}" immediate="true" >
+				<f:selectItem itemLabel="Selecione" noSelectionOption="true"/>
+				<f:selectItems value="#{pessoaBean.estados}" />
+				<f:ajax event="change" execute="@this" listener="#{pessoaBean.carregaCidades}"/>
+			</h:selectOneMenu> 
 				
 			<h:outputLabel />
 				<h:panelGroup >

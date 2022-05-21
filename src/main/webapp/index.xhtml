@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
 <h:head>
 	<title>Login</title>
@@ -13,13 +14,13 @@
 		<h:graphicImage height="100" width="100" style="float:center;  margin-left: 6cm;" library="img" name="cadeado.png"/>	
 			<h1>Realize o Login</h1>
 			<h:panelGrid columns="2">
-			<h:outputLabel value="Login:"/>
-			<h:inputText value="#{pessoaBean.pessoa.login}"/>
+			<h:outputLabel value="Login:" />
+			<h:inputText value="#{pessoaBean.pessoa.login}" pt:placeholder="Login" />
 
-			<h:outputLabel value="Senha:"/>
-			<h:inputSecret value="#{pessoaBean.pessoa.senha}"/>
+			<h:outputLabel value="Senha:" />
+			<h:inputSecret value="#{pessoaBean.pessoa.senha}" pt:placeholder="Senha" />
 			
-			<h:commandButton value="Acessar" action="#{pessoaBean.logar}"/>	
+			<h:commandButton value="Acessar" action="#{pessoaBean.logar}" />	
 			</h:panelGrid>
 		</h:form>	
 	</h:body>
