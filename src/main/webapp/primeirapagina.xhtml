@@ -17,7 +17,7 @@
 		
 		<ui:include src="/menu.xhtml" />
 		    
-		<h:form id="formPessoa" rendered="#{pessoaBean.permiteAcesso('ADMIN')}" >
+		<h:form id="formPessoa"  enctype="multipart/form-data" enrendered="#{pessoaBean.permiteAcesso('ADMIN')}" >
 			
 			<h:messages infoStyle="color:blue;" />
 			
@@ -26,7 +26,11 @@
 	        		<h:outputText value="Cadastro de Usuários - JSF" />
 	        	</f:facet>
 				<h:outputLabel value="ID:" />
-				<h:inputText value="#{pessoaBean.pessoa.id}" readonly="true" pt:placeholder="ID" style="background:Gainsboro; font-weight:bold;" />
+				<h:inputText value="#{pessoaBean.pessoa.id}" readonly="true" pt:placeholder="ID" 
+				style="background:Gainsboro; font-weight:bold;" />
+				
+				<h:outputLabel value="Foto Perfil:"/>
+				<h:inputFile id="foto" value="#{pessoaBean.arquivofoto}" />
 			
 				<h:outputLabel value="Nome:" />
 				<h:inputText id="nomeUser" value="#{pessoaBean.pessoa.nome}"  required="true" requiredMessage="Informe nome do usuário" 

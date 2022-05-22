@@ -19,6 +19,7 @@ import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 import com.google.gson.Gson;
 
@@ -35,7 +36,9 @@ import br.com.repository.IDaoPessoaImpl;
 public class PessoaBean {
 
 	private Pessoa pessoa = new Pessoa();
+
 	private GenericDao<Pessoa> genericDao = new GenericDao<Pessoa>();
+
 	private List<Pessoa> pessoas = new ArrayList<Pessoa>();
 
 	private IDaoPessoa idaoPessoa = new IDaoPessoaImpl();
@@ -44,7 +47,12 @@ public class PessoaBean {
 
 	private List<SelectItem> cidades;
 
+	private Part arquivofoto;
+
 	public String salvar() {
+		
+		System.out.println(arquivofoto);
+		
 		pessoa = genericDao.merge(pessoa);
 		carregarPessoas();
 		mostrarMsg("Cadastrado com sucesso!");
@@ -242,6 +250,14 @@ public class PessoaBean {
 			setCidades(selectItemsCidade);
 
 		}
+	}
+
+	public Part getArquivofoto() {
+		return arquivofoto;
+	}
+
+	public void setArquivofoto(Part arquivofoto) {
+		this.arquivofoto = arquivofoto;
 	}
 
 }
