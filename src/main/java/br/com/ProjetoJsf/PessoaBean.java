@@ -12,6 +12,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.component.html.HtmlSelectOneMenu;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
@@ -40,7 +41,7 @@ public class PessoaBean {
 	private IDaoPessoa idaoPessoa = new IDaoPessoaImpl();
 
 	private List<SelectItem> estados;
-	
+
 	private List<SelectItem> cidades;
 
 	public String salvar() {
@@ -194,38 +195,32 @@ public class PessoaBean {
 
 	@SuppressWarnings({ "unchecked" })
 	public void carregaCidades(AjaxBehaviorEvent event) {
-		String codigoEstado = (String) event.getComponent().getAttributes().get("submittedValue");
 
-		if (codigoEstado != null) {
-			System.out.println(codigoEstado);
+		Estados estado = (Estados) ((HtmlSelectOneMenu) event.getSource()).getValue();
 
-			Estados estado = JPAUtil.getEntityManager().find(Estados.class, Long.parseLong(codigoEstado));
+		if (estado != null) {
+			pessoa.setEstados(estado);
 
-			if (estado != null) {
-				pessoa.setEstados(estado);
-				
-				List<Cidades> cidades = JPAUtil.getEntityManager().
-						createQuery("from Cidades where estados.id = " + codigoEstado).getResultList();
-				
-				List<SelectItem> selectItemsCidade = new ArrayList<SelectItem>();
-				
-				for (Cidades cidade : cidades) {
-					selectItemsCidade.add(new SelectItem(cidade.getId(), cidade.getNome()));
-				}
-				
-				setCidades(selectItemsCidade);
+			List<Cidades> cidades = JPAUtil.getEntityManager()
+					.createQuery("from Cidades where estados.id = " + estado.getId()).getResultList();
+
+			List<SelectItem> selectItemsCidade = new ArrayList<SelectItem>();
+
+			for (Cidades cidade : cidades) {
+				selectItemsCidade.add(new SelectItem(cidade, cidade.getNome()));
 			}
 
+			setCidades(selectItemsCidade);
 		}
 
 	}
-	
+
 	public void setCidades(List<SelectItem> cidades) {
 		this.cidades = cidades;
 	}
-	
+
 	public List<SelectItem> getCidades() {
-		
+
 		return cidades;
 	}
 
