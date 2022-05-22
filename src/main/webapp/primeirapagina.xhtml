@@ -193,9 +193,9 @@
 	    
 				<h:column>
 				<f:facet name="header">Editar</f:facet>
-					<h:commandLink>
+					<h:commandLink title="Editar" immediate="true" action="#{pessoaBean.editar}">
 						<f:setPropertyActionListener target="#{pessoaBean.pessoa}" value="#{pessoa}" />
-						<h:graphicImage value="//resources/img/editar-base.png" title="Editar" />
+						<h:graphicImage value="//resources/img/editar-base.png" />
 					</h:commandLink>
 				</h:column>
 				
@@ -203,9 +203,9 @@
 				
 				<h:column rendered="#{pessoaBean.permiteAcesso('ADMIN')}">
 				<f:facet name="header">Excluir</f:facet>
-					<h:commandLink action="#{pessoaBean.remove}">
+					<h:commandLink action="#{pessoaBean.remove}" title="Excluir" >
 						<f:setPropertyActionListener target="#{pessoaBean.pessoa}" value="#{pessoa}" />
-						<h:graphicImage value="//resources/img/deletar-base.png" title="Excluir" />
+						<h:graphicImage value="//resources/img/deletar-base.png" />
 					</h:commandLink>
 				</h:column>
 			</h:dataTable>

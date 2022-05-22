@@ -71,6 +71,8 @@ public class Pessoa implements Serializable {
 
 	@Transient // Não fica persistente ou não grava no banco de dados...
 	private Estados estados;
+	
+	private String fotoIconBase64;
 
 	public Pessoa() {
 
