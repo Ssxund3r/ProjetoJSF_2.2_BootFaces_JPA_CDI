@@ -7,12 +7,14 @@ import javax.faces.model.SelectItem;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
+import org.hibernate.service.spi.InjectService;
+
 import br.com.entidades.Estados;
 import br.com.entidades.Pessoa;
 import br.com.jpautil.JPAUtil;
 
 public class IDaoPessoaImpl implements IDaoPessoa {
-
+	
 	@Override
 	public Pessoa consultaUsuario(String login, String senha) {
 
