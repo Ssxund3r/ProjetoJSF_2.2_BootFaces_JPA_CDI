@@ -12,6 +12,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -320,6 +321,16 @@ public class PessoaBean {
 		}
 
 		return buf;
+	}
+	
+	@SuppressWarnings({ "unchecked" })
+	public void download() {
+		
+		Map<String, String> params = FacesContext.getCurrentInstance().
+				getExternalContext().getInitParameterMap();
+		String fileDownloadId = params.get("fileDownloadId");
+		System.out.println(fileDownloadId);
+		
 	}
 
 }

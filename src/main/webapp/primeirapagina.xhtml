@@ -31,7 +31,7 @@
 				
 				<h:outputLabel value="Foto Perfil:"/>
 				<h:inputFile id="foto" value="#{pessoaBean.arquivofoto}" />
-			
+				
 				<h:outputLabel value="Nome:" />
 				<h:inputText id="nomeUser" value="#{pessoaBean.pessoa.nome}"  required="true" requiredMessage="Informe nome do usuário" 
 				pt:placeholder="Nome" >
@@ -178,6 +178,14 @@
 				<h:column>
 				<f:facet name="header">ID</f:facet>
 					<h:outputText value="#{pessoa.id}" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">Foto</f:facet>
+					<h:commandLink actionListener="#{pessoaBean.download}" >
+					<h:graphicImage width="60" height="60" value="#{pessoa.fotoIconBase64}" />
+					<f:param name="fileDownloadId" value="#{pessoa.id}" />
+					</h:commandLink>
 				</h:column>
 	
 				<h:column>
