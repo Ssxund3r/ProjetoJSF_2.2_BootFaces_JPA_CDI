@@ -8,9 +8,9 @@ import javax.persistence.EntityTransaction;
 import br.com.jpautil.JPAUtil;
 
 public class GenericDao<E> {
-	
+
 	private EntityManager entityManager = JPAUtil.getEntityManager();
-	
+
 	public void salvar(E entidade) {
 
 		entityManager = JPAUtil.getEntityManager();
@@ -38,23 +38,34 @@ public class GenericDao<E> {
 		return retorno;
 
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public E consulta(E entidade) {
 		Object id = JPAUtil.getPrimaryKey(entidade);
-		
+
 		E e = (E) entityManager.find(entidade.getClass(), id);
-		
+
 		return e;
 	}
-	
-	public E consultaAlternativa(Long id, Class<E> entidade) { /*Versão alternativa para Consulta do ID - Ao invés de passar 2
-																 classes, então passamos 2 parâmetros.*/
+
+	public E consultaAlternativa(Long id, Class<E> entidade) { /*
+																 * Versão alternativa para Consulta do ID - Ao invés de
+																 * passar 2 classes, então passamos 2 parâmetros.
+																 */
 		E e = (E) entityManager.find(entidade, id);
 		return e;
 
 	}
-	
+
+	public E consultar(Class<E> entidade, String PK) {
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+		entityTransaction.begin();
+
+		E objeto = (E) entityManager.find(entidade, Long.parseLong(PK));
+		entityTransaction.commit();
+		return objeto;
+	}
+
 	public void delete(E entidade) {
 		entityManager = JPAUtil.getEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();
