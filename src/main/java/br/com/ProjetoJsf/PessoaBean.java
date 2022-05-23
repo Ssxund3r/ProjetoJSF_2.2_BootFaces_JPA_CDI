@@ -1,5 +1,7 @@
 package br.com.ProjetoJsf;
 
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -20,9 +22,11 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.model.SelectItem;
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+import javax.xml.bind.DatatypeConverter;
 
 import com.google.gson.Gson;
 
@@ -52,9 +56,39 @@ public class PessoaBean {
 
 	private Part arquivofoto;
 
-	public String salvar() {
+	public String salvar() throws IOException {
 
-		System.out.println(arquivofoto);
+		/* Processar imagem */
+
+		byte[] imagemByte = getByte(arquivofoto.getInputStream());
+		pessoa.setFotoIconBase64Original(imagemByte); /* Salva imagem original */
+
+		/* transformar em um bufferimage */
+		BufferedImage bufferedImage = ImageIO.read(new ByteArrayInputStream(imagemByte));
+
+		/* Pega o tipo da imagem */
+		int type = bufferedImage.getType() == 0 ? BufferedImage.TYPE_INT_ARGB : bufferedImage.getType();
+
+		int largura = 200;
+		int altura = 200;
+
+		/* Criar a miniatura */
+		BufferedImage resizedImage = new BufferedImage(largura, altura, type);
+		Graphics2D g = resizedImage.createGraphics();
+		g.drawImage(bufferedImage, 0, 0, largura, altura, null);
+		g.dispose();
+
+		/* Escrever novamente a imagem em tamanho menor */
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		String extensao = arquivofoto.getContentType().split("\\/")[1]; /* image/png */
+		ImageIO.write(resizedImage, extensao, baos);
+
+		String miniImagem = "data:" + arquivofoto.getContentType() + ";base64,"
+				+ DatatypeConverter.printBase64Binary(baos.toByteArray());
+
+		/* Processar imagem */
+		pessoa.setFotoIconBase64(miniImagem);
+		pessoa.setExtensao(extensao);
 
 		pessoa = genericDao.merge(pessoa);
 		carregarPessoas();
@@ -264,7 +298,7 @@ public class PessoaBean {
 	}
 
 	@SuppressWarnings("unused")
-	/*Método que converte um inputstream para array de bytes*/
+	/* Método que converte um inputstream para array de bytes */
 	private byte[] getByte(InputStream is) throws IOException {
 		int len;
 		int size = 1024;
