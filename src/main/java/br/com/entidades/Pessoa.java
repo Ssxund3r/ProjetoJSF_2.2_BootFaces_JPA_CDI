@@ -17,6 +17,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Entity
 public class Pessoa implements Serializable {
@@ -26,13 +27,16 @@ public class Pessoa implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-
-	@NotNull(message = "O campo Idade é obrigatório!")
+	
+	@Pattern(regexp = "[a-zA-Z ]*", message = "Caracter inválido!")
+	@NotNull(message = "O campo Nome é obrigatório!")
 	private String nome;
-
-	@NotNull(message = "O campo Idade é obrigatório!")
+	
+	
+	@Pattern(regexp = "[a-zA-Z ]*", message = "Caracter inválido!")
+	@NotNull(message = "O campo Sobrenome é obrigatório!")
 	private String sobrenome;
-
+	
 	@NotNull(message = "O campo Idade é obrigatório!")
 	private Integer idade;
 
@@ -71,14 +75,16 @@ public class Pessoa implements Serializable {
 	private String siafi;
 
 	@ManyToOne
+	@NotNull(message = "Campo é obrigatório!")
 	private Cidades cidades;
 
 	@Transient // Não fica persistente ou não grava no banco de dados...
+	@NotNull(message = "Campo é obrigatório!")
 	private Estados estados;
 
 	@Column(columnDefinition = "text") // Tipo text grava arquivos em base64
 	private String fotoIconBase64;
-
+	
 	private String extensao; // extensão jpg, png, jpeg...
 
 	@Lob // Gravar arquivos no banco de dados

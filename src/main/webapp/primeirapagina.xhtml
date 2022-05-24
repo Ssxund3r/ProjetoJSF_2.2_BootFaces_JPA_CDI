@@ -27,20 +27,20 @@
 	        	</f:facet>
 				<h:outputLabel value="ID:" />
 				<h:inputText value="#{pessoaBean.pessoa.id}" readonly="true" pt:placeholder="ID" 
-				style="background:Gainsboro; font-weight:bold;" />
+				style="background:Gainsboro;" />
 				
 				<h:outputLabel value="Foto Perfil:"/>
 				<h:inputFile id="foto" value="#{pessoaBean.arquivofoto}" />
 				
 				<h:outputLabel value="Nome:" />
-				<h:inputText id="nomeUser" value="#{pessoaBean.pessoa.nome}"  required="true" requiredMessage="Informe nome do usuário" 
+				<h:inputText id="nomeUser" value="#{pessoaBean.pessoa.nome}"  required="true"
 				pt:placeholder="Nome" >
-				<f:validateLength minimum="3" maximum="50" />
+				<f:validateLength minimum="3" maximum="15" />
 				</h:inputText>
 				
 				<h:outputLabel value="Sobrenome:" />
 				<h:inputText value="#{pessoaBean.pessoa.sobrenome}" pt:placeholder="Sobrenome" />
-		
+				
 				<h:outputLabel value="Idade:" />
 				<h:inputText value="#{pessoaBean.pessoa.idade}" pt:placeholder="Idade" />
 				
