@@ -271,6 +271,7 @@ public class PessoaBean {
 		return cidades;
 	}
 
+	
 	@SuppressWarnings("unchecked")
 	public void editar() {
 		if (pessoa.getCidades() != null) {
