@@ -24,6 +24,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.model.SelectItem;
 import javax.imageio.ImageIO;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -57,7 +59,7 @@ public class PessoaBean {
 	private List<SelectItem> cidades;
 
 	private Part arquivofoto;
-
+	
 	public String salvar() throws IOException {
 
 		/* Processar imagem */
@@ -271,7 +273,6 @@ public class PessoaBean {
 		return cidades;
 	}
 
-	
 	@SuppressWarnings("unchecked")
 	public void editar() {
 		if (pessoa.getCidades() != null) {
