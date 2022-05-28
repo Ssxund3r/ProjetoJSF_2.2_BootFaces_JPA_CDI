@@ -4,24 +4,32 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:b="http://bootsfaces.net/ui">
 
 <h:head>
 	<title>Login</title>
 </h:head>
-	<h:body style="font-family:sans-serif;">		
-		<h:form id="formLogin" style="margin-top: 5%; margin-left: 40%;">
-		<h:graphicImage height="100" width="100" style="float:center;  margin-left: 6cm;" library="img" name="cadeado.png"/>	
+	<h:body>
+		<b:messages  id="msg" auto-update="true" />
+		<b:form id="formLogin" style="margin-left: 2%; margin-top: 12%; margin-right: 15%;">
 			<h1>Realize o Login</h1>
-			<h:panelGrid columns="2">
-			<h:outputLabel value="Login:" />
-			<h:inputText value="#{pessoaBean.pessoa.login}" pt:placeholder="Login" />
-
-			<h:outputLabel value="Senha:" />
-			<h:inputSecret value="#{pessoaBean.pessoa.senha}" pt:placeholder="Senha" />
 			
-			<h:commandButton value="Acessar" action="#{pessoaBean.logar}" />	
-			</h:panelGrid>
-		</h:form>	
+				<b:panelGrid columns="3">
+				<b:column>
+					<h:outputLabel value="Login:" />
+					<b:inputText id="login" value="#{pessoaBean.pessoa.login}" pt:placeholder="Login" required="true" requiredMessage="Informe o Login!" />
+					<b:message for="login"  auto-update="true" />
+					
+					<h:outputLabel value="Senha:" />
+					<b:inputSecret id="senha" value="#{pessoaBean.pessoa.senha}" pt:placeholder="Senha"  required="true" requiredMessage="Informe a Senha!" />
+					<b:message for="senha"  auto-update="true" />
+				
+					<h:outputLabel />
+					<b:commandButton value="Acessar" action="#{pessoaBean.logar}" style="width: 100%"  />	
+					
+				</b:column>
+			</b:panelGrid>
+		</b:form>	
 	</h:body>
 </html>

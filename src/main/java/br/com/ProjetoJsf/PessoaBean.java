@@ -192,7 +192,10 @@ public class PessoaBean implements Serializable {
 			session.setAttribute("usuarioLogado", pessoaUser);
 
 			return "primeirapagina.jsf";
+		}else {
+			FacesContext.getCurrentInstance().addMessage("msg", new FacesMessage("Usuário não encontrado!"));
 		}
+		
 		return "index.jsf";
 	}
 
