@@ -6,7 +6,7 @@ import javax.persistence.Persistence;
 
 public class JPAUtil {
 
-	private static EntityManagerFactory factory;
+	private static EntityManagerFactory factory; //teste
 
 	static {
 		if (factory == null) {

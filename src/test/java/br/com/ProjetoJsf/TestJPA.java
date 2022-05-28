@@ -50,18 +50,6 @@ public class TestJPA {
 	}
 
 	@Test
-	public void testConsultaId() {
-		GenericDao<Pessoa> genericDao = new GenericDao<Pessoa>();
-		Pessoa pessoa = new Pessoa();
-
-		pessoa.setId(76L);
-		pessoa = genericDao.consulta(pessoa);
-
-		System.out.println(pessoa);
-
-	}
-
-	@Test
 	public void testeConsultaIdAlternatio() {
 		GenericDao<Pessoa> genericDao = new GenericDao<Pessoa>();
 		Pessoa pessoa = genericDao.consultaAlternativa(76L, Pessoa.class);
