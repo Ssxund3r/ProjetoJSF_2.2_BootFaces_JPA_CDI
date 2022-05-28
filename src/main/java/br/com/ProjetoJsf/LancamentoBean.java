@@ -1,13 +1,15 @@
 package br.com.ProjetoJsf;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -15,16 +17,21 @@ import br.com.dao.GenericDao;
 import br.com.entidades.Lancamento;
 import br.com.entidades.Pessoa;
 import br.com.repository.IDaoLancamento;
-import br.com.repository.IDaoLancamentoImpl;
 
 @ViewScoped
-@ManagedBean(name = "lancamentoBean")
-public class LancamentoBean {
+@Named(value = "lancamentoBean")
+public class LancamentoBean implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private Lancamento lancamento = new Lancamento();
-	private GenericDao<Lancamento> genericDao = new GenericDao<Lancamento>();
 	private List<Lancamento> lancamentos = new ArrayList<Lancamento>();
-	private IDaoLancamento daoLancamento = new IDaoLancamentoImpl();
+
+	@Inject
+	private GenericDao<Lancamento> genericDao;
+
+	@Inject
+	private IDaoLancamento daoLancamento;
 
 	public String salvar() {
 		FacesContext context = FacesContext.getCurrentInstance();

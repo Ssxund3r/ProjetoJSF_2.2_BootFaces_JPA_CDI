@@ -19,11 +19,6 @@ import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-import org.hibernate.validator.constraints.NotEmpty;
-import org.hibernate.validator.constraints.br.CPF;
-import org.hibernate.validator.constraints.br.TituloEleitoral;
-
-
 @Entity
 public class Pessoa implements Serializable {
 
@@ -32,23 +27,19 @@ public class Pessoa implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@Pattern(regexp = "[a-zA-Z ]*", message = "Caracter inválido!")
 	@NotNull(message = "O campo Nome é obrigatório!")
 	private String nome;
-	
-	
+
 	@Pattern(regexp = "[a-zA-Z ]*", message = "Caracter inválido!")
 	@NotNull(message = "O campo Sobrenome é obrigatório!")
 	private String sobrenome;
-	
-	@NotNull(message = "O campo Idade é obrigatório!")
+
 	private Integer idade;
-	
-	@CPF(message = "CPF obrigatório!")
+
 	private String cpf;
-	
-	@TituloEleitoral(message = "Titulo Eleitoral obrigatório!")
+
 	private String titEleitoral;
 
 	@Temporal(TemporalType.DATE)
@@ -82,16 +73,14 @@ public class Pessoa implements Serializable {
 	private String siafi;
 
 	@ManyToOne
-	@NotEmpty(message = "Campo é obrigatório!")
 	private Cidades cidades;
 
 	@Transient // Não fica persistente ou não grava no banco de dados...
-	@NotEmpty(message = "Campo é obrigatório!")
 	private Estados estados;
 
 	@Column(columnDefinition = "text") // Tipo text grava arquivos em base64
 	private String fotoIconBase64;
-	
+
 	private String extensao; // extensão jpg, png, jpeg...
 
 	@Lob // Gravar arquivos no banco de dados
