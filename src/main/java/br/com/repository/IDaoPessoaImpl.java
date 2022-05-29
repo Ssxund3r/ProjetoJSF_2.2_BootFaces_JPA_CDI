@@ -12,7 +12,6 @@ import javax.persistence.EntityTransaction;
 
 import br.com.entidades.Estados;
 import br.com.entidades.Pessoa;
-import br.com.jpautil.JPAUtil;
 
 @Named
 public class IDaoPessoaImpl implements IDaoPessoa, Serializable {

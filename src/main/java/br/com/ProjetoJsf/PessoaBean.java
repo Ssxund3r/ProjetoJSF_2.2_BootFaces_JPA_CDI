@@ -17,7 +17,6 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
-import javax.faces.component.html.HtmlSelectOneMenu;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
@@ -40,6 +39,7 @@ import br.com.entidades.Estados;
 import br.com.entidades.Pessoa;
 import br.com.jpautil.JPAUtil;
 import br.com.repository.IDaoPessoa;
+import net.bootsfaces.component.selectOneMenu.SelectOneMenu;
 
 @ViewScoped
 @Named(value = "pessoaBean")
@@ -68,37 +68,43 @@ public class PessoaBean implements Serializable {
 
 	public String salvar() throws IOException {
 
-		/* Processar imagem */
+		if (arquivofoto.getInputStream() != null) {
+			/* Processar imagem */
 
-		byte[] imagemByte = getByte(arquivofoto.getInputStream());
-		pessoa.setFotoIconBase64Original(imagemByte); /* Salva imagem original */
+			byte[] imagemByte = getByte(arquivofoto.getInputStream());
 
-		/* transformar em um bufferimage */
-		BufferedImage bufferedImage = ImageIO.read(new ByteArrayInputStream(imagemByte));
+			/* transformar em um bufferimage */
+			BufferedImage bufferedImage = ImageIO.read(new ByteArrayInputStream(imagemByte));
 
-		/* Pega o tipo da imagem */
-		int type = bufferedImage.getType() == 0 ? BufferedImage.TYPE_INT_ARGB : bufferedImage.getType();
+			if (bufferedImage != null) {
 
-		int largura = 200;
-		int altura = 200;
+				pessoa.setFotoIconBase64Original(imagemByte); /* Salva imagem original */
+				/* Pega o tipo da imagem */
+				int type = bufferedImage.getType() == 0 ? BufferedImage.TYPE_INT_ARGB : bufferedImage.getType();
 
-		/* Criar a miniatura */
-		BufferedImage resizedImage = new BufferedImage(largura, altura, type);
-		Graphics2D g = resizedImage.createGraphics();
-		g.drawImage(bufferedImage, 0, 0, largura, altura, null);
-		g.dispose();
+				int largura = 200;
+				int altura = 200;
 
-		/* Escrever novamente a imagem em tamanho menor */
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		String extensao = arquivofoto.getContentType().split("\\/")[1]; /* image/png */
-		ImageIO.write(resizedImage, extensao, baos);
+				/* Criar a miniatura */
+				BufferedImage resizedImage = new BufferedImage(largura, altura, type);
+				Graphics2D g = resizedImage.createGraphics();
+				g.drawImage(bufferedImage, 0, 0, largura, altura, null);
+				g.dispose();
 
-		String miniImagem = "data:" + arquivofoto.getContentType() + ";base64,"
-				+ DatatypeConverter.printBase64Binary(baos.toByteArray());
+				/* Escrever novamente a imagem em tamanho menor */
+				ByteArrayOutputStream baos = new ByteArrayOutputStream();
+				String extensao = arquivofoto.getContentType().split("\\/")[1]; /* image/png */
+				ImageIO.write(resizedImage, extensao, baos);
 
-		/* Processar imagem */
-		pessoa.setFotoIconBase64(miniImagem);
-		pessoa.setExtensao(extensao);
+				String miniImagem = "data:" + arquivofoto.getContentType() + ";base64,"
+						+ DatatypeConverter.printBase64Binary(baos.toByteArray());
+
+				/* Processar imagem */
+				pessoa.setFotoIconBase64(miniImagem);
+				pessoa.setExtensao(extensao);
+			}
+
+		}
 
 		pessoa = genericDao.merge(pessoa);
 		carregarPessoas();
@@ -192,10 +198,10 @@ public class PessoaBean implements Serializable {
 			session.setAttribute("usuarioLogado", pessoaUser);
 
 			return "primeirapagina.jsf";
-		}else {
+		} else {
 			FacesContext.getCurrentInstance().addMessage("msg", new FacesMessage("Usuário não encontrado!"));
 		}
-		
+
 		return "index.jsf";
 	}
 
@@ -254,7 +260,7 @@ public class PessoaBean implements Serializable {
 	@SuppressWarnings({ "unchecked" })
 	public void carregaCidades(AjaxBehaviorEvent event) {
 
-		Estados estado = (Estados) ((HtmlSelectOneMenu) event.getSource()).getValue();
+		Estados estado = (Estados) ((SelectOneMenu) event.getSource()).getValue();
 
 		if (estado != null) {
 			pessoa.setEstados(estado);
@@ -300,7 +306,7 @@ public class PessoaBean implements Serializable {
 			setCidades(selectItemsCidade);
 
 		}
-		
+
 		return "";
 	}
 
@@ -312,7 +318,6 @@ public class PessoaBean implements Serializable {
 		this.arquivofoto = arquivofoto;
 	}
 
-	
 	/* Método que converte um inputstream para array de bytes */
 	private byte[] getByte(InputStream is) throws IOException {
 		int len;
