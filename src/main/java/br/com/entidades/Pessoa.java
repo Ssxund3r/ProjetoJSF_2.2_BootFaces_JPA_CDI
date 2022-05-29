@@ -50,9 +50,9 @@ public class Pessoa implements Serializable {
 	private String[] frameworks;
 
 	private Boolean ativo;
-
+	
 	private String login;
-
+	
 	private String senha;
 
 	private String perfilUser;
