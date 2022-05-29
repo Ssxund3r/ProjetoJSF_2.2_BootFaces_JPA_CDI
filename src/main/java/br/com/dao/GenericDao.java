@@ -11,7 +11,7 @@ import javax.persistence.EntityTransaction;
 import br.com.jpautil.JPAUtil;
 
 @Named
-public class GenericDao<E> implements Serializable{
+public class GenericDao<E> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

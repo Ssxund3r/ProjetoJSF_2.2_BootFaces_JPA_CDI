@@ -19,7 +19,7 @@ import br.com.jpautil.JPAUtil;
 
 @WebFilter(urlPatterns = "/*") /* Vai interceptar todas as páginas */
 public class FilterAutenticacao implements Filter {
-	
+
 	@Inject
 	private JPAUtil jpaUtil;
 
