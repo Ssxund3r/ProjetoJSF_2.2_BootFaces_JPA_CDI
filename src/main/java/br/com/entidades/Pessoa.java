@@ -78,14 +78,24 @@ public class Pessoa implements Serializable {
 	@NotNull(message = "O campo CEP é obrigatório!")
 	private String cep;
 
+	private String numero;
+
 	private String logradouro;
+
 	private String complemento;
+
 	private String bairro;
+
 	private String localidade;
+
 	private String uf;
+
 	private String ibge;
+
 	private String gia;
+
 	private String ddd;
+
 	private String siafi;
 
 	@ManyToOne
@@ -217,6 +227,14 @@ public class Pessoa implements Serializable {
 
 	public void setGia(String gia) {
 		this.gia = gia;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
 	}
 
 	public void setCep(String cep) {
