@@ -19,6 +19,8 @@ import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 public class Pessoa implements Serializable {
 
@@ -34,25 +36,36 @@ public class Pessoa implements Serializable {
 
 	@Pattern(regexp = "[a-zA-Z ]*", message = "Caracter inválido!")
 	@NotNull(message = "O campo Sobrenome é obrigatório!")
+	@NotEmpty(message = "O campo sobrenome é obrigatório!")
 	private String sobrenome;
 
 	private Integer idade;
 
+	@NotEmpty(message = "O campo CPF é obrigatório! ")
+	@NotNull(message = "O campo CPF é obrigatório!")
 	private String cpf;
 
+	@NotEmpty(message = "O campo título de eleitor é obrigatório! ")
+	@NotNull(message = "O campo título de eleitor é obrigatório!")
 	private String titEleitoral;
 
 	@Temporal(TemporalType.DATE)
 	private Date dataNascimento = new Date();
 
+	@NotNull(message = "O campo sexo é obrigatório!")
+	@NotEmpty(message = "O cmapo sexo é obrigatório!")
 	private String sexo;
 
 	private String[] frameworks;
 
 	private Boolean ativo;
-	
+
+	@NotEmpty(message = "O campo login é obrigatório! ")
+	@NotNull(message = "O campo login é obrigatório!")
 	private String login;
-	
+
+	@NotEmpty(message = "O campo senha é obrigatório! ")
+	@NotNull(message = "O campo senha é obrigatório!")
 	private String senha;
 
 	private String perfilUser;
@@ -61,7 +74,10 @@ public class Pessoa implements Serializable {
 
 	private Integer[] linguagensProg;
 
+	@NotEmpty(message = "O campo CEP é obrigatório! ")
+	@NotNull(message = "O campo CEP é obrigatório!")
 	private String cep;
+
 	private String logradouro;
 	private String complemento;
 	private String bairro;

@@ -31,5 +31,23 @@ public class IDaoLancamentoImpl implements IDaoLancamento, Serializable {
 
 		return lista;
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Lancamento> consultarLimite10(Long codUser) {
+		List<Lancamento> lista = null;
+
+		EntityTransaction transaction = entityManager.getTransaction();
+		transaction.begin();
+
+		lista = entityManager.createQuery(" from Lancamento where usuario.id = " + codUser + " order by id desc ")
+				.setMaxResults(10).getResultList();
+
+		transaction.commit();
+
+		return lista;
+	}
+	
+	
 
 }

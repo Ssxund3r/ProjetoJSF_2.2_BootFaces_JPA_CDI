@@ -1,6 +1,7 @@
 package br.com.entidades;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -8,6 +9,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Lancamento implements Serializable {
@@ -17,17 +24,43 @@ public class Lancamento implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@NotNull(message = "O campo numero nota fiscal é obrigatório!")
 	private Integer numeroNotaFiscal;
 
+	@NotEmpty(message = "O campo empresa origem é obrigatório!")
+	@Pattern(regexp = "[a-zA-Z ]*", message = "Caracter inválido!")
 	private String empresaOrigem;
 
+	@NotEmpty(message = "O campo empresa destino é obrigatório!")
+	@Pattern(regexp = "[a-zA-Z ]*", message = "Caracter inválido!")
 	private String empresaDestino;
-
 
 	@SuppressWarnings("deprecation")
 	@ManyToOne(optional = false)
 	@org.hibernate.annotations.ForeignKey(name = "usuario_fk")
 	private Pessoa usuario;
+	
+	@Temporal(TemporalType.DATE)
+	private Date dataIni;
+	
+	@Temporal(TemporalType.DATE)
+	private Date dataFinal;
+
+	public Date getDataIni() {
+		return dataIni;
+	}
+
+	public void setDataIni(Date dataIni) {
+		this.dataIni = dataIni;
+	}
+
+	public Date getDataFinal() {
+		return dataFinal;
+	}
+
+	public void setDataFinal(Date dataFinal) {
+		this.dataFinal = dataFinal;
+	}
 
 	public Long getId() {
 		return id;

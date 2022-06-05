@@ -14,10 +14,14 @@
 	
 		
 		
-		<b:form id="formLogin" style="margin-left: 40%; margin-top: 7%; margin-right: 8%;">
+		<b:form id="formLogin" style="margin-left: 40%; margin-top: 7%; margin-right: 1%;">
 			<h1>Realize o Login</h1>
 				<b:messages  id="msg" auto-update="true" show-icon="false" style="margin-right: 65%;"/>
+				
 				<b:panelGrid columns="3">
+				
+				<b:panel>
+				
 				<b:column>
 					<h:outputLabel value="Login:" />
 					<b:inputText id="login" value="#{pessoaBean.pessoa.login}" pt:placeholder="Login" required="true" requiredMessage="Informe o Login!" />
@@ -31,7 +35,7 @@
 					<b:commandButton value="Acessar" action="#{pessoaBean.logar}" style="width: 100%"  />	
 									
 				</b:column>
-					
+				</b:panel>
 			</b:panelGrid>
 			
 		</b:form>	

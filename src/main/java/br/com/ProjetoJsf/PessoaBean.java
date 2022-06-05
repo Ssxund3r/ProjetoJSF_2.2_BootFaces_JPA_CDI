@@ -141,7 +141,7 @@ public class PessoaBean implements Serializable {
 
 	@PostConstruct
 	public void carregarPessoas() {
-		pessoas = genericDao.getListEntity(Pessoa.class);
+		pessoas = genericDao.getListEntityLimit10(Pessoa.class);
 	}
 
 	public Pessoa getPessoa() {
