@@ -104,12 +104,13 @@ public class PessoaBean implements Serializable {
 				pessoa.setExtensao(extensao);
 			}
 
-		}
+		} 
 
-		pessoa = genericDao.merge(pessoa);
-		carregarPessoas();
-		mostrarMsg("Cadastrado com sucesso!");
-		return "";
+			pessoa = genericDao.merge(pessoa);
+			carregarPessoas();
+			mostrarMsg("Cadastrado com sucesso!");
+			return "";
+		
 	}
 
 	private void mostrarMsg(String msg) {

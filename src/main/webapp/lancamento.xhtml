@@ -23,39 +23,37 @@
 						<b:panel>
 						
 							<b:column>
-							<h:outputLabel value="ID:" />
-							<b:inputText value="#{lancamentoBean.lancamento.id}" readonly="true" pt:placeholder="ID" />
+								<h:outputLabel value="ID:" />
+								<b:inputText value="#{lancamentoBean.lancamento.id}" readonly="true" pt:placeholder="ID" />
 							</b:column>
 							
 							<b:column>
-							<h:outputLabel value="Nota:" />
-							<b:inputText value="#{lancamentoBean.lancamento.numeroNotaFiscal}"  pt:placeholder="Nº Nota Fiscal" >
-							<f:validateLength minimum="9" maximum="9" />
-							</b:inputText>
+								<h:outputLabel value="Nota:" />
+								<b:inputText value="#{lancamentoBean.lancamento.numeroNotaFiscal}"  pt:placeholder="Nº Nota Fiscal" />
 							</b:column>
 							
 							
 							<b:column>
-							<h:outputLabel value="Data Inicial:" style="margin-left: 40%;"/>
-							<b:datepicker value="#{lancamentoBean.lancamento.dataIni}" locale="en" required="true" requiredMessage="Campo data inicial obrigatório!"/>
+								<h:outputLabel value="Data Inicial:" style="margin-left: 40%;"/>
+								<b:datepicker value="#{lancamentoBean.lancamento.dataIni}" locale="en" required="true" requiredMessage="Campo data inicial obrigatório!"/>
 							</b:column>
 						
 						</b:panel>
 						<b:panel>
 						
 							<b:column>
-							<h:outputLabel value="Empresa Origem:" />
-							<b:inputText value="#{lancamentoBean.lancamento.empresaOrigem}" pt:placeholder="Empresa Origem" />
+								<h:outputLabel value="Empresa Origem:" />
+								<b:inputText value="#{lancamentoBean.lancamento.empresaOrigem}" pt:placeholder="Empresa Origem" />
 							</b:column>
 							
 							<b:column>
-							<h:outputLabel value="Empresa Destino:" />
-							<b:inputText value="#{lancamentoBean.lancamento.empresaDestino}" pt:placeholder="Empresa Destino" />
+								<h:outputLabel value="Empresa Destino:" />
+								<b:inputText value="#{lancamentoBean.lancamento.empresaDestino}" pt:placeholder="Empresa Destino" />
 							</b:column>
 							
 							<b:column>
-							<h:outputLabel value="Data Final:" style="margin-left: 45%;"/>
-							<b:datepicker value="#{lancamentoBean.lancamento.dataFinal}" locale="en" required="true" requiredMessage="Campo data final obrigatório!"/>
+								<h:outputLabel value="Data Final:" style="margin-left: 45%;"/>
+								<b:datepicker value="#{lancamentoBean.lancamento.dataFinal}" locale="en" required="true" requiredMessage="Campo data final obrigatório!"/>
 							</b:column>
 							
 					</b:panel>
@@ -63,14 +61,14 @@
 				<b:column>
 				<h:outputLabel />
 					<h:panelGroup>
-					<b:commandButton id="botaoNovo" value="Novo" action="#{lancamentoBean.novo}"  look="primary"  title="Novo" style="margin-left:10px;" >
-					<f:ajax execute="botaoNovo" render="@form" />
+						<b:commandButton id="botaoNovo" value="Novo" action="#{lancamentoBean.novo}"  look="primary"  title="Novo" style="margin-left:10px;" >
+						<f:ajax execute="botaoNovo" render="@form" />
 					</b:commandButton>
-					<b:commandButton id="botaoLimpar" value="Limpar" type="reset" title="Resetar" look="warning" style="margin-left:10px;" >
-					<f:ajax execute="botaoLimpar" render="@form"/>
+						<b:commandButton id="botaoLimpar" value="Limpar" type="reset" title="Resetar" look="warning" style="margin-left:10px;" >
+						<f:ajax execute="botaoLimpar" render="@form"/>
 					</b:commandButton>	
-					<b:commandButton value="Salvar" action="#{lancamentoBean.salvar}" look="success"  title="Salvar" style="margin-left:10px;" /> 
-					<b:commandButton value="Deletar" action="#{lancamentoBean.remove}" look="danger" title="Deletar" style="margin-left:10px;" 
+						<b:commandButton value="Salvar" action="#{lancamentoBean.salvar}" look="success"  title="Salvar" style="margin-left:10px;" /> 
+						<b:commandButton value="Deletar" action="#{lancamentoBean.remove}" look="danger" title="Deletar" style="margin-left:10px;" 
 					rendered="#{pessoaBean.permiteAcesso('ADMIN')}" />	
 					</h:panelGroup>
 					</b:column>
@@ -122,8 +120,8 @@
 					<h:column>
 						<f:facet name="header">Excluir</f:facet>
 						<h:commandLink action="#{lancamentoBean.remove}" rendered="#{pessoaBean.permiteAcesso('ADMIN')}" >
-						<f:setPropertyActionListener target="#{lancamentoBean.lancamento}" value="#{lanc}" />
-						<h:graphicImage value="//resources/img/deletar-base.png" title="Excluir" />
+							<f:setPropertyActionListener target="#{lancamentoBean.lancamento}" value="#{lanc}" />
+							<h:graphicImage value="//resources/img/deletar-base.png" title="Excluir" />
 						</h:commandLink>
 					</h:column>	
 							

@@ -13,6 +13,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -25,7 +26,10 @@ public class Lancamento implements Serializable {
 	private Long id;
 
 	@NotNull(message = "O campo numero nota fiscal é obrigatório!")
-	private Integer numeroNotaFiscal;
+	@NotEmpty(message = "O campo empresa destino é obrigatório!")
+	@Pattern(regexp = "[0-9]*", message = "Caracter inválido!")
+	@Size(min = 3, max = 9, message = "Necessário preencher com 9 dígitos!")
+	private String numeroNotaFiscal;
 
 	@NotEmpty(message = "O campo empresa origem é obrigatório!")
 	@Pattern(regexp = "[a-zA-Z ]*", message = "Caracter inválido!")
@@ -70,11 +74,11 @@ public class Lancamento implements Serializable {
 		this.id = id;
 	}
 
-	public Integer getNumeroNotaFiscal() {
+	public String getNumeroNotaFiscal() {
 		return numeroNotaFiscal;
 	}
 
-	public void setNumeroNotaFiscal(Integer numeroNotaFiscal) {
+	public void setNumeroNotaFiscal(String numeroNotaFiscal) {
 		this.numeroNotaFiscal = numeroNotaFiscal;
 	}
 
