@@ -8,7 +8,7 @@
 	xmlns:b="http://bootsfaces.net/ui">
 
 <h:head>
-	<title>Lançamentos</title>
+	<title>Geração Lançamentos</title>
 </h:head>
 	<h:body >
 		<b:messages auto-update="true" id="msg"/>
@@ -16,10 +16,29 @@
 			
 		<b:form id="formLancamento">
 				<b:panelGrid columns="2" >
+				<f:facet name="header">
+					<h:outputText value="Lançamentos" />
+				</f:facet>
 						
+				<b:column>
+					<h:outputLabel value="Data Inicial:" />
+					<b:datepicker locale="en" value="#{rellancamento.dataIni}"/>
+				</b:column>	
+				
+				<b:column>
+					<h:outputLabel value="Data Final:" />
+					<b:datepicker locale="en" value="#{rellancamento.dataFim}"/>
+				</b:column>
+				
+				<b:column>
+					<h:outputLabel value="Numero Nota:" />
+					<b:inputText value="#{rellancamento.numNota}"/>
+				</b:column>				
+					
 				</b:panelGrid>
 			
-					<b:commandButton id="botaoNovo" value="Buscar" action="#{rellancamento.buscarLancamento}" />
+					<b:commandButton id="botaoNovo" value="Buscar" action="#{rellancamento.buscarLancamento}"  
+					look="primary"  style="margin-left: 1%;"/>
 				
 		</b:form>
 					
@@ -27,7 +46,7 @@
 			<br/>
 			<br/>
 						
-		<b:form>
+		<b:form style="margin-left: 1%;">
 				
 			<b:dataTable value="#{rellancamento.lancamentos}" var="lanc" border="3" pdf="true" excel="true" csv="true" print="true">
 				
