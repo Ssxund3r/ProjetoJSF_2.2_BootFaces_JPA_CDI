@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<h:head>
+	<title>Relatório Dados Usuário</title>
+	
+</h:head>
+	<h:body >
+		<b:messages auto-update="true" id="msg"/>
+		<ui:include src="/menu.xhtml" />
+			<link href="resources/estilo.css" rel="stylesheet" />
+			
+		<b:form id="formPessoa">
+				<b:panelGrid columns="2" >
+				
+				<f:facet name="header">
+					<h:outputText value="Usuarios" />
+				</f:facet>
+					
+				<b:column>
+					<h:outputLabel value="Nome:" />
+					<b:inputText value="#{relusuario.nome}" />
+				</b:column>		
+						
+				<b:column>
+					<h:outputLabel value="Data Nascimento:" />
+					<b:datepicker locale="en" value="#{relusuario.dataIni}"/>
+				</b:column>	
+					
+				</b:panelGrid>
+			
+					<b:commandButton id="botaoNovo" value="Buscar" action="#{relusuario.buscarRelPessoa}"  
+					look="primary"  style="margin-left: 1%;"/>
+				
+		</b:form>
+					
+			<br/>
+			<br/>
+			<br/>
+						
+		<b:form style="margin-left: 1%;">
+				
+			<b:dataTable value="#{relusuario.pessoas}" var="p" border="3" pdf="true" excel="true" csv="true" print="true">
+				
+				<b:dataTableColumn value="#{p.id}" label="ID" />
+
+				<b:dataTableColumn value="#{p.nome}" label="Nome Usuário" />
+
+				<b:dataTableColumn value="#{p.sobrenome}" label="Sobrenome" />
+				
+				<b:dataTableColumn value="#{p.dataNascimento}" label="Data Nascimento" />
+																
+			</b:dataTable>
+		</b:form>
+	</h:body>
+</html>
