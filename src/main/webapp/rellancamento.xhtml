@@ -9,11 +9,12 @@
 
 <h:head>
 	<title>Geração Lançamentos</title>
+	
 </h:head>
 	<h:body >
 		<b:messages auto-update="true" id="msg"/>
 		<ui:include src="/menu.xhtml" />
-			
+			<link href="resources/estilo.css" rel="stylesheet" />
 		<b:form id="formLancamento">
 				<b:panelGrid columns="2" >
 				<f:facet name="header">
@@ -32,7 +33,7 @@
 				
 				<b:column>
 					<h:outputLabel value="Numero Nota:" />
-					<b:inputText value="#{rellancamento.numNota}"/>
+					<b:inputText value="#{rellancamento.numNota}" mask="numeric"/>
 				</b:column>				
 					
 				</b:panelGrid>

@@ -55,7 +55,7 @@
 				<b:column>
 				<h:outputLabel value="Idade:" />
 				<b:inputText value="#{pessoaBean.pessoa.idade}" pt:placeholder="Idade"  
-				required="true" validatorMessage="O campo idade é obrigatório!"/>
+				required="true" validatorMessage="O campo idade é obrigatório!" />
 				</b:column>
 				
 				</b:panel>
@@ -63,7 +63,7 @@
 				
 				<b:column>
 				<h:outputLabel value="CPF:" />
-				<b:inputText value="#{pessoaBean.pessoa.cpf}" pt:placeholder="CPF" />
+				<b:inputText value="#{pessoaBean.pessoa.cpf}" pt:placeholder="CPF" mask="999.999.999-99"/>
 				</b:column>
 				
 				<b:column>
