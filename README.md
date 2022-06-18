@@ -11,4 +11,4 @@ Ferramentas & Frameworks aplicados no projeto:
 4. CDI
 5. BOOTFACES
 6. TOMCAT v9.0  
-7. BD - PostgreSQL                              
+7. BD - PostgreSQL v9.5                            
