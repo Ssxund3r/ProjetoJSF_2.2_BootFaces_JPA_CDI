@@ -41,19 +41,15 @@ public class Pessoa implements Serializable {
 
 	private Integer idade;
 
-	@NotEmpty(message = "O campo CPF é obrigatório! ")
-	@NotNull(message = "O campo CPF é obrigatório!")
 	private String cpf;
 
-	@NotEmpty(message = "O campo título de eleitor é obrigatório! ")
-	@NotNull(message = "O campo título de eleitor é obrigatório!")
 	private String titEleitoral;
 
 	@Temporal(TemporalType.DATE)
 	private Date dataNascimento = new Date();
 
 	@NotNull(message = "O campo sexo é obrigatório!")
-	@NotEmpty(message = "O cmapo sexo é obrigatório!")
+	@NotEmpty(message = "O campo sexo é obrigatório!")
 	private String sexo;
 
 	private String[] frameworks;

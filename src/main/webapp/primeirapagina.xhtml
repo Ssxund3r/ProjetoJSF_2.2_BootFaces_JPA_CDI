@@ -167,13 +167,14 @@
 				</b:selectOneMenu>
 				</b:column> 
 				
-				<b:column>
-				<h:outputLabel value="CEP:" />
-				<b:inputText value="#{pessoaBean.pessoa.cep}"  pt:placeholder="CEP" >
-					<f:ajax event="blur" execute="@this" listener="#{pessoaBean.pesquisaCep}" render="logradouro complemento bairro
-					localidade uf ibge gia ddd siafi"/>
-				</b:inputText >
-				</b:column>
+				  <b:column>
+				    <h:outputLabel value="CEP:"/>
+				    <b:inputText value="#{pessoaBean.pessoa.cep}" pt:placeholder="CEP" mask="99999-999" >
+				       <f:ajax event="blur" execute="@form" 
+				        listener="#{pessoaBean.pesquisaCep}"
+				        render="@form"/>
+				    </b:inputText>
+	   			</b:column>
 				
 				<b:column>
 					<h:outputLabel value="Número:" />

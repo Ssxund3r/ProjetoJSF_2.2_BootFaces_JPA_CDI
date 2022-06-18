@@ -68,7 +68,7 @@ public class PessoaBean implements Serializable {
 
 	public String salvar() throws IOException {
 
-		if (arquivofoto.getInputStream() != null) {
+		if (arquivofoto != null && arquivofoto.getInputStream() != null) {
 			/* Processar imagem */
 
 			byte[] imagemByte = getByte(arquivofoto.getInputStream());
@@ -104,13 +104,13 @@ public class PessoaBean implements Serializable {
 				pessoa.setExtensao(extensao);
 			}
 
-		} 
+		}
 
-			pessoa = genericDao.merge(pessoa);
-			carregarPessoas();
-			mostrarMsg("Cadastrado com sucesso!");
-			return "";
-		
+		pessoa = genericDao.merge(pessoa);
+		carregarPessoas();
+		mostrarMsg("Cadastrado com sucesso!");
+		return "";
+
 	}
 
 	private void mostrarMsg(String msg) {
